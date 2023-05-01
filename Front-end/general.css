@@ -1,10 +1,14 @@
+body {
+    background-color: #CAD2C5;
+}
+
 #textcontainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: fit-content;
-    background-color: lightblue;
+    background-color: #354F52;
     border-radius: 10px;
     padding: 16px;
     position: absolute;
@@ -15,6 +19,7 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 25%;
 }
 
 p{
@@ -23,23 +28,26 @@ p{
     font-size: 24px;
     white-space: wrap;
     padding: 16px;
+    color: white;
 }
 
 h2{
     text-align: center;
     margin: 0;
-    font-size: 48px;
+    font-size: 32px;
     white-space: wrap;
+    color: white;
 }
 
 #button {
     margin-top: 16px;
     padding: 12px 24px;
-    background-color: lightgreen;
-    border-color: rgb(123, 241, 123);
+    background-color: #84A98C;
+    border-color: #84A98C;
     border-radius: 10px;
     border-style: solid;
     cursor: pointer;
+    color: white;
 }
 
 #button:hover {
