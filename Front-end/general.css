@@ -37,6 +37,23 @@ h2{
     background-color: #52796f;
 }
 
+#begin_btn {
+    margin-top: 16px;
+    padding: 12px 24px;
+    background-color: #84A98C;
+    border-color: #84A98C;
+    border-radius: 10px;
+    border-style: solid;
+    cursor: pointer;
+    color: white;
+}
+
+#begin_btn:hover {
+    color: #fff;
+    border-color: #52796f;
+    background-color: #52796f;
+}
+
 #textcontainer {
     display: flex;
     flex-direction: column;

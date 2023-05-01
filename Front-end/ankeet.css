@@ -30,11 +30,12 @@ input, select {
     background-color: #ffde79;
     border-color: #ffde79;
     border-radius: 10px;
-    bottom: 2%;
-    left: 2%;
     position: absolute;
     border-style: solid;
     cursor: pointer;
+    bottom: 5%;
+    left: 10%;
+    transform: translateX(-50%);
 }
 
 #skip:hover {
@@ -53,8 +54,9 @@ input, select {
     cursor: pointer;
     color: white;
     position: absolute;
-    bottom: 2%;
-    right: 2%;
+    bottom: 5%;
+    right: 10%;
+    transform: translateX(50%);
 }
 
 #next:hover {
