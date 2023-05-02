@@ -34,7 +34,7 @@ input, select {
     cursor: pointer;
     bottom: 5%;
     left: 5%;
-    transform: translate(50%, 200%);
+    transform: translate(600%, 200%);
 }
 
 #skip:hover {
@@ -54,7 +54,7 @@ input, select {
     position: absolute;
     bottom: 5%;
     right: 5%;
-    transform: translate(-50%, 200%);
+    transform: translate(30%, 200%);
 }
 
 #next:hover {
