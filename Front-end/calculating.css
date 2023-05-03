@@ -1,0 +1,30 @@
+body {  
+    background-color: #CAD2C5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 125px;
+    color:white;
+}
+
+#thank{
+    background-color: #354F52;  
+    border-radius: 16px;
+    padding: 70px;
+    font-size: 24px;
+
+}
+
+#calc{
+    background-color: #52796F;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 15px;
+    margin: 20px;
+}  
+    
