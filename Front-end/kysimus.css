@@ -94,3 +94,29 @@ body {
 .answer-button:active {
   background-color: #52796F;
 }
+
+.previous {
+    padding: 8px 16px;
+	font-size: 16px;
+    color: #fff;
+    background-color: #ffde79;
+    border-color: #ffde79;
+    border-radius: 20px;
+    position: absolute;
+    border-style: solid;
+    cursor: pointer;
+	height: 40px;
+	top: 320px;
+	left: 175px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.previous:hover {
+    border-color: #FFE8A3;
+    background-color: #FFE8A3;
+    color: #fff;
+}
