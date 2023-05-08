@@ -1,0 +1,84 @@
+form {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    color: white;
+    grid-column: 1 / 2;
+    text-align: left;
+    padding-left: 10px;
+    line-height: 32px;
+}
+
+input, select {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    width: 200px;
+    grid-column: 2 / 3;
+}
+
+#skip {
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #ffde79;
+    border-color: #ffde79;
+    border-radius: 10px;
+    position: absolute;
+    border-style: solid;
+    cursor: pointer;
+    bottom: 5%;
+    left: 5%;
+    transform: translate(130%, 200%);
+}
+
+#skip:hover {
+    border-color: #FFE8A3;
+    background-color: #FFE8A3;
+    color: #fff;
+}
+
+#next {
+    padding: 8px 16px;
+    background-color: #84A98C;
+    border-color: #84A98C;
+    border-radius: 10px;
+    border-style: solid;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    transform: translate(-100%, 200%);
+}
+
+#next:hover {
+    color: #fff;
+    border-color: #52796f;
+    background-color: #52796f;
+}
+
+#textcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    background-color: #354F52;
+    border-radius: 10px;
+    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    text-align: center;
+    overflow: show;
+    text-overflow: ellipsis;
+}
