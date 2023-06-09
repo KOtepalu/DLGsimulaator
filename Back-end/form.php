@@ -12,16 +12,6 @@ $form_work = null;
 $form_hobby = null;
 $form_kids = null;
 
-// Get the last assigned user ID from the database
-$conn = new mysqli($servername, $username, $password, $dbname);
-$result = $conn->query("SELECT MAX(user_id) AS max_user_id FROM User");
-$row = $result->fetch_assoc();
-$last_user_id = $row['max_user_id'];
-$conn->close();
-
-// If the last_user_id is null (no existing records), set the new_user_id to 1, otherwise increment the last_user_id
-$new_user_id = $last_user_id ? $last_user_id + 1 : 1;
-
 // Ankeedi sisu salvestamine
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["form_submit"])) {
@@ -35,21 +25,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $conn = new mysqli($servername, $username, $password, $dbname);
         $conn->set_charset("utf8");
-        $stmt = $conn->prepare("INSERT INTO Form (form_id, form_name, form_age, form_country, form_education, form_work, form_hobby, form_kids, User_user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isissssii", $form_id, $form_name, $form_age, $form_country, $form_education, $form_work, $form_hobby, $form_kids, $new_user_id);
-        if ($stmt->execute()) {
+
+        // Insert the form data into the Form table without specifying User_user_id
+        $form_insert_stmt = $conn->prepare("INSERT INTO Form (form_name, form_age, form_country, form_education, form_work, form_hobby, form_kids) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $form_insert_stmt->bind_param("sissssi", $form_name, $form_age, $form_country, $form_education, $form_work, $form_hobby, $form_kids);
+        
+        if ($form_insert_stmt->execute()) {
+            $new_user_id = $form_insert_stmt->insert_id; // Get the generated User_user_id
+            $form_insert_stmt->close();
+            
+            // Update the User_user_id for the inserted form record
+            $update_stmt = $conn->prepare("UPDATE Form SET User_user_id = ? WHERE form_id = ?");
+            $update_stmt->bind_param("ii", $new_user_id, $new_user_id);
+            $update_stmt->execute();
+            $update_stmt->close();
+            
             // Form data saved successfully, redirect to the first question
             header("Location: index.php?questionId=1");
             exit;
         } else {
-            echo "Error: " . $stmt->error;
+            echo "Error: " . $form_insert_stmt->error;
         }
-        $stmt->close();
+        $form_insert_stmt->close();
         $conn->close();
     }
 }
+
+$isFilled = false;
+if(isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["country_input"]) || isset($_POST["education_input"]) 
+|| isset($_POST["work_input"]) || isset($_POST["hobby_input"]) || isset($_POST["kids_input"])){
+    $isFilled = true;
+}else{
+    $isFilled = false;
+}
 ?>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,9 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="kids_input">Kids:</label>
             <input type="number" id="kids_input" name="kids_input" placeholder="Number of Kids">
 
-            <button type="submit" id="next" name="form_submit">NEXT</button>
+            <button type="submit" id="next" name="form_submit" onClick="window.location.href='start.html'">NEXT</button>
         </form>
-        <a href="index.php?questionId=101"><button id="skip">SKIP</button></a>
+        <a href="start.html"><button id="skip">SKIP</button></a>
     </div>
 </body>
 </html>
