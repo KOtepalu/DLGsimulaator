@@ -20,3 +20,25 @@ body {
 .mute {
     grid-column: 1/2;
 }
+
+.button-group {
+    display: flex;
+    flex: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.answer-button {
+    width: 400px;
+    height: fit-content;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 1px;
+    background: rgba(132, 169, 140, 0.2);
+}
+
+.answer-button:hover {
+    background: rgba(132, 169, 140, 0.5);
+}
