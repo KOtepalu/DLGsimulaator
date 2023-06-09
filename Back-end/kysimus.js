@@ -15,3 +15,18 @@ function getRandomChatBubble() {
 }
 
 getRandomChatBubble();
+
+var muteBtn = document.getElementById("mute");
+var muted = "../pics/mute_50_2.png";
+var unmuted = "../pics/unmute_50.png";
+var swap = false;
+
+function toggleMute() {
+  if (swap) {
+    muteBtn.src = muted;
+    swap = false;
+  } else {
+    muteBtn.src = unmuted;
+    swap = true;
+  }
+}
