@@ -1,9 +1,61 @@
 #textbubble {
     width: 600px;
+    position: relative;
 }
 
 .answerbubble {
     width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.text1 {
+    font-size: 24px;
+    text-align: center;
+    position: absolute;
+    top: 19%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.text1 {
+    font-size: 24px;
+    text-align: center;
+    position: absolute;
+    top: 19%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.text2 {
+    font-size: 24px;
+    text-align: center;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.text3 {
+    font-size: 24px;
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.text4 {
+    font-size: 24px;
+    text-align: center;
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 #container {
@@ -11,4 +63,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
