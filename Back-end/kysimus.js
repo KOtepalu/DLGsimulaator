@@ -1,12 +1,17 @@
-function getRandomLocation() {
+var bubble = document.getElementById("textbubble");
+var leftImage = new Image();
+var rightImage = new Image();
+
+leftImage.src = "../pics/chatbubble_left.png";
+rightImage.src = "../pics/chatbubble_right.png";
+
+function getRandomChatBubble() {
     var randomNum = Math.random();
     if (randomNum < 0.5){
-        var element = document.getElementById("textbubble");
+        bubble.src = leftImage.src;
     } else {
-        var element = document.getElementById("textbubble");
-        element.style.webkitTransform = "scaleX(-1)";
-        element.style.transform = "scaleX(-1)";
+        bubble.src = rightImage.src;
     }
 }
 
-getRandomLocation();
+getRandomChatBubble();
