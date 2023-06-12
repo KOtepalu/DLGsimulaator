@@ -26,21 +26,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn = new mysqli($servername, $username, $password, $dbname);
         $conn->set_charset("utf8");
 
-        // Insert the form data into the Form table without specifying User_user_id
         $form_insert_stmt = $conn->prepare("INSERT INTO Form (form_name, form_age, form_country, form_education, form_work, form_hobby, form_kids) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        if (!$form_insert_stmt) {
+            echo "Error: " . $conn->error;
+            exit;
+        }
         $form_insert_stmt->bind_param("sissssi", $form_name, $form_age, $form_country, $form_education, $form_work, $form_hobby, $form_kids);
         
         if ($form_insert_stmt->execute()) {
-            $new_user_id = $form_insert_stmt->insert_id; // Get the generated User_user_id
+            $new_form_id = $form_insert_stmt->insert_id;
             $form_insert_stmt->close();
             
-            // Update the User_user_id for the inserted form record
-            $update_stmt = $conn->prepare("UPDATE Form SET User_user_id = ? WHERE form_id = ?");
-            $update_stmt->bind_param("ii", $new_user_id, $new_user_id);
-            $update_stmt->execute();
-            $update_stmt->close();
-            
-            // Form data saved successfully, redirect to the first question
             header("Location: index.php?questionId=1");
             exit;
         } else {
@@ -52,10 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $isFilled = false;
-if(isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["country_input"]) || isset($_POST["education_input"]) 
-|| isset($_POST["work_input"]) || isset($_POST["hobby_input"]) || isset($_POST["kids_input"])){
+if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["country_input"]) || isset($_POST["education_input"]) 
+|| isset($_POST["work_input"]) || isset($_POST["hobby_input"]) || isset($_POST["kids_input"])) {
     $isFilled = true;
-}else{
+} else {
     $isFilled = false;
 }
 ?>
