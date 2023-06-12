@@ -55,6 +55,7 @@ $answers = getAnswers($questionId);
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="general.css">
     <link rel="stylesheet" href="kysimus.css">
 </head>
 <body>
@@ -64,9 +65,10 @@ $answers = getAnswers($questionId);
             <div class ="figures"><img src="sillaots_ja_callaghan.png" alt="figures"></div>
             <div class ="time" id="timer">00:00</div>
         </div>
+        <img src="../pics/unmute_50.png" alt="mute" class="mute" id="mute" onclick="toggleMute()">
         <div class="container2">
             <div class ="kysimused">
-                <h1>
+                <h1 id="question_text">
                     <?php echo $question; ?>
                 </h1>
             </div>
@@ -77,6 +79,33 @@ $answers = getAnswers($questionId);
             </div>
         </div>
     </div>
-</body>    
+</body>
+<script>
+var isMuted = false;
+var muteBtn = document.getElementById("mute");
+var muted = "../pics/mute_50_2.png";
+var unmuted = "../pics/unmute_50.png";
+
+function toggleMute() {
+    const synth = window.speechSynthesis;
+    const voices = synth.getVoices();
+
+    if (isMuted) {
+    window.speechSynthesis.cancel();
+    muteBtn.textContent = 'Unmute';
+    muteBtn.src = muted;
+    isMuted = false;
+    } else {
+    var text = document.getElementById('question_text').textContent;
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.voice = voices["Fred"];
+    utterance.volume = 0.2;
+    window.speechSynthesis.speak(utterance);
+    muteBtn.textContent = 'Mute';
+    muteBtn.src = unmuted;
+    isMuted = true;
+    }
+}
+</script>    
 </html>
 
