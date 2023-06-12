@@ -1,3 +1,17 @@
+body {
+    background-image: url("ankeet_blur.jpg");
+    background-color: #CAD2C5;
+    font-family: Verdana, sans-serif;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p{
+    color: white;
+}
+
 form {
     margin-top: 1em;
     display: grid;
@@ -5,6 +19,7 @@ form {
     grid-gap: 20px;
     align-items: center;
     justify-content: center;
+    margin: 10px 0px;
 }
 
 label {
@@ -15,7 +30,7 @@ label {
     line-height: 32px;
 }
 
-input, select {
+input {
     padding: 0.5em;
     border-radius: 5px;
     border: none;
@@ -26,41 +41,43 @@ input, select {
 #skip {
     padding: 8px 16px;
     color: #fff;
-    background-color: #ffde79;
+    background-color: rgba(255,222,121,0.7);
     border-color: #ffde79;
     border-radius: 10px;
-    position: absolute;
+    position: relative;
     border-style: solid;
     cursor: pointer;
-    bottom: 5%;
-    left: 5%;
-    transform: translate(130%, 200%);
+    margin-right: 5px;
+
 }
 
 #skip:hover {
     border-color: #FFE8A3;
-    background-color: #FFE8A3;
+    background-color: rgba(240, 209, 115, 0.7);
     color: #fff;
 }
 
 #next {
     padding: 8px 16px;
-    background-color: #84A98C;
+    background-color: rgba(132, 169, 140, 0.6);
     border-color: #84A98C;
     border-radius: 10px;
     border-style: solid;
     cursor: pointer;
     color: white;
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    transform: translate(-100%, 200%);
+    position: relative;
+    margin-left: 5px;
 }
 
 #next:hover {
     color: #fff;
-    border-color: #52796f;
-    background-color: #52796f;
+    border-color: #38534d;
+    background-color: rgba(82, 121, 111,0.8);
+}
+
+#button{
+    display: flex;
+    flex-direction: row;
 }
 
 #textcontainer {
@@ -81,4 +98,5 @@ input, select {
     text-align: center;
     overflow: show;
     text-overflow: ellipsis;
+    background-color: rgba(53,79,82,0.7);
 }

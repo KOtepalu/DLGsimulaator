@@ -1,95 +1,77 @@
-body{
+body {
+    background-image: url("ankeet_blur.jpg");
     background-color: #CAD2C5;
-    font-family: Verdana, sans-serif; 
-}
-
-.main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #52796F;
-    border-radius: 16px;
-    color:white;
-    margin: auto;
-    margin-top: 100px;
-    width: fit-content;
-    height: 50vh;
-}
-
-p{
-    background-color: #354F52;
-    border-radius: 16px;
-    padding: 16px;
-    font-size: 24px;
+    font-family: Verdana, sans-serif;
+    height: 100vh;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
 }
 
 .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-rows: 3vh auto 2vh;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(53,79,82,0.6);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
 }
 
-.result{
-    border-radius: 50%;
-	background-color: #354F52;
-    padding: 30px;
-    margin-left: 50px; 
-    background-clip: border-box;
+p{
+    grid-row: 1/2;
+    text-align: center;
+}
+
+.textcontainer{
+    grid-row: 2/3;
+    display: flex;
+    padding: 25px;
 }
 
 .text{
-    border: #354F52;
-    border-radius: 15px;
-    margin-left: 25px;
+    padding: 10px;
 }
 
-.text2{
-    border: #354F52;
-    border-radius: 15px;
-    margin-left: 40px;
-    margin-right: 10px;
-}
-
-
-.btnContainer{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.btncontainer{
+    grid-row: 3/4;
+    display: flex;
+    justify-content: space-between;
 }
 
 button{
-    padding: 8px 16px;
+    padding: 5px;
     font-size: 14px;
-    border-radius: 20px; 
+    border-radius: 12px; 
     border-style:solid;
-    margin-right: 30px;
-    margin-left: 25px;
 }
 
 .nosubmit{
     color: black;
-    background-color: #FFE8A3;
+    background-color: #ffe8a3bd;
     border-color: #FFE8A3;
     font-size: 13px;
 }
 
 .submit{
     color: #fff;
-    background-color: #84A98C;
+    background-color: #84a98cb2;
     border-color: #84A98C;
 }
 
 .nosubmit:hover{
     border-color: #ffde79;
-    background-color: #ffde79;
+    background-color: #ffde79b2;
     color: black;
 }
 
 .submit:hover{
-    background-color: #354F52;
+    background-color: #46676bb2;
     border-color:  #354F52;
 }
+
