@@ -96,7 +96,7 @@ if ($result->num_rows > 0) {
         <img src="../pics/unmute_50.png" alt="mute" class="mute" id="mute" onclick="toggleMute()">
         <div class="container2">
             <div class="kysimused">
-                <h1><?php echo $question; ?></h1>
+                <h1 id="question_text"><?php echo $question; ?></h1>
             </div>
             <div class="points">
                 <h2>Points: <?php echo $points; ?></h2>
