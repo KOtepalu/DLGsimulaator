@@ -102,15 +102,21 @@ if ($result->num_rows > 0) {
                 <h2>Points: <?php echo $points; ?></h2>
             </div>
             <div class="button-group">
-                <?php foreach ($answers as $answer): ?>
+            <?php foreach ($answers as $answer): ?>
                     <?php
                         $next_question_id = $answer['next_question_id'];
                         $answer_score = $answer['answer_score'];
                         $next_points = $points + $answer_score; // Increase points by answer score
                     ?>
-                    <a href="index.php?questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
-                        <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
-                    </a>
+                    <?php if ($answer['answer_end'] == 1): ?>
+                        <a href="results.php?points=<?php echo $next_points; ?>">
+                            <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
+                        </a>
+                    <?php else: ?>
+                        <a href="index.php?questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
+                            <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
+                        </a>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>
