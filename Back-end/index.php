@@ -84,13 +84,11 @@ if ($result->num_rows > 0) {
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="kysimus.css">
+    <link rel="stylesheet" href="../Front-end/kysimus.css">
 </head>
 <body>
     <div class="pagecontainer">
         <div class="container1">
-            <div class="category">Intro</div>
-            <div class="figures"><img src="sillaots_ja_callaghan.png" alt="figures"></div>
             <div class="time" id="timer">00:00</div>
         </div>
         <img src="../pics/unmute_50.png" alt="mute" class="mute" id="mute" onclick="toggleMute()">
@@ -98,29 +96,31 @@ if ($result->num_rows > 0) {
             <div class="kysimused">
                 <h1 id="question_text"><?php echo $question; ?></h1>
             </div>
-            <div class="points">
+            <!-- <div class="points">
                 <h2>Points: <?php echo $points; ?></h2>
-            </div>
-            <div class="button-group">
+            </div> -->
+            <div class="figures"><img src="../Front-end/sillaots_ja_callaghan.png" alt="figures"></div>
+        </div>
+        <div class="button-group">
             <?php foreach ($answers as $answer): ?>
-                    <?php
-                        $next_question_id = $answer['next_question_id'];
-                        $answer_score = $answer['answer_score'];
-                        $next_points = $points + $answer_score; // Increase points by answer score
-                    ?>
-                    <?php if ($answer['answer_end'] == 1): ?>
-                        <a href="results.php?points=<?php echo $next_points; ?>">
-                            <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
-                        </a>
-                    <?php else: ?>
-                        <a href="index.php?questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
-                            <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
-                        </a>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </div>
+                <?php
+                    $next_question_id = $answer['next_question_id'];
+                    $answer_score = $answer['answer_score'];
+                    $next_points = $points + $answer_score; // Increase points by answer score
+                ?>
+                <?php if ($answer['answer_end'] == 1): ?>
+                    <a href="results.php?points=<?php echo $next_points; ?>">
+                        <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
+                    </a>
+                <?php else: ?>
+                    <a href="index.php?questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
+                        <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
+                    </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </div>
     </div>
+    <div class="foreground-image"></div>
 </body>
 <script>
 var isMuted = false;

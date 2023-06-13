@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $new_form_id = $form_insert_stmt->insert_id;
             $form_insert_stmt->close();
             
-            header("Location: start.php?form_id=$new_form_id");
+            header("Location: index.php?questionId=1");
             exit;
         } else {
             echo "Error: " . $form_insert_stmt->error;
@@ -69,7 +69,7 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
 <body>
     <div id="textcontainer">
         <p>For a better interview experience, please fill out this form</p>
-        <form method="POST" action="start.php">
+        <form method="POST">
             <label for="name_input">Name:</label>
             <input type="text" id="name_input" name="name_input" placeholder="Name" required>
 
@@ -91,7 +91,7 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
             <label for="kids_input">Kids:</label>
             <input type="number" id="kids_input" name="kids_input" placeholder="Number of Kids">
 
-            <button type="submit" id="next" name="form_submit">NEXT</button>
+            <button type="submit" id="next" name="form_submit" onClick="window.location.href='start.html'">NEXT</button>
         </form>
         <a href="start.html"><button id="skip">SKIP</button></a>
     </div>
