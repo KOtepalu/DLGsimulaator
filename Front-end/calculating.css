@@ -1,6 +1,12 @@
 body {  
-    background-color: #CAD2C5;
-    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    background-image: url("mathimage.png");
+    font-family: Verdana, sans-serif;
+    height: 100vh;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 #main{
@@ -8,12 +14,16 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 125px;
     color:white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 #thank{
-    background-color: #354F52;  
+    background-color: rgba(53,79,82,0.6); 
     border-radius: 16px;
     padding: 70px;
     font-size: 24px;
@@ -21,26 +31,25 @@ body {
 }
 
 #calc{
-    background-color: #52796F;
+    background-color: #52796f96;
     border-radius: 16px;
     padding: 16px;
     font-size: 15px;
     margin: 20px;
-} 
+    text-align: center;
+}  
 
-#button {
-    margin-top: 16px;
-    padding: 12px 24px;
-    background-color: #84A98C;
-    border-color: #84A98C;
-    border-radius: 10px;
-    border-style: solid;
-    cursor: pointer;
-    color: white;
+.video-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
 }
 
-#button:hover {
-    color: #fff;
-    border-color: #52796f;
-    background-color: #52796f;
+.video-container video {
+    min-width: 100%;
+    min-height: 100%;
 }
