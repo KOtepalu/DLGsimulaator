@@ -9,6 +9,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$form_name = $_GET['form_name'];
+// Decode the form_name value
+$form_name = urldecode($form_name);
+
+
+if (isset($_GET['form_id'])) {
+    $form_id = $_GET['form_id'];
+} else {
+    $form_id = 0; // Default form_id
+}
+
 function getQuestion($questionId){
     global $conn;
     $sql = "SELECT `question_text` FROM `Question` WHERE `question_id` = $questionId";
@@ -70,13 +81,18 @@ if (isset($_GET['points'])) {
 
 roundScore($points);
 
-$sql = "SELECT `question_end` FROM `Question` WHERE `question_id` = $questionId";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $question_end = $row["question_end"];
-    // You can perform any necessary actions here for a question end
+// Insert data into User_Result table if answer_end is 1
+if (isset($_GET['form_id']) && isset($_GET['points']) && $answers[0]['answer_end'] == 1) {
+    $form_id = $_GET['form_id'];
+    $points = $_GET['points'];
+    $sql = "INSERT INTO `User_Result` (`Form_form_id`, `result_score`) VALUES ('$form_id', '$points')";
+    if ($conn->query($sql) === TRUE) {
+        echo "Data inserted successfully.";
+    } else {
+        echo "Error inserting data: " . $conn->error;
+    }
 }
+
 
 ?>
 
@@ -84,43 +100,45 @@ if ($result->num_rows > 0) {
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../Front-end/kysimus.css">
+    <link rel="stylesheet" href="kysimus.css">
 </head>
 <body>
     <div class="pagecontainer">
         <div class="container1">
+            <div class="category">Intro</div>
+            <div class="figures"><img src="sillaots_ja_callaghan.png" alt="figures"></div>
             <div class="time" id="timer">00:00</div>
         </div>
         <img src="../pics/unmute_50.png" alt="mute" class="mute" id="mute" onclick="toggleMute()">
         <div class="container2">
             <div class="kysimused">
-                <h1 id="question_text"><?php echo $question; ?></h1>
+                <h1><?php echo $question; ?></h1>
             </div>
-            <!-- <div class="points">
+            <div class="points">
                 <h2>Points: <?php echo $points; ?></h2>
-            </div> -->
-            <div class="figures"><img src="../Front-end/sillaots_ja_callaghan.png" alt="figures"></div>
-        </div>
-        <div class="button-group">
+            </div>
+            <div class="button-group">
             <?php foreach ($answers as $answer): ?>
-                <?php
-                    $next_question_id = $answer['next_question_id'];
-                    $answer_score = $answer['answer_score'];
-                    $next_points = $points + $answer_score; // Increase points by answer score
-                ?>
-                <?php if ($answer['answer_end'] == 1): ?>
-                    <a href="results.php?points=<?php echo $next_points; ?>">
-                        <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
-                    </a>
-                <?php else: ?>
-                    <a href="index.php?questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
-                        <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
-                    </a>
-                <?php endif; ?>
-            <?php endforeach; ?>
+    <?php
+        $next_question_id = $answer['next_question_id'];
+        $answer_score = $answer['answer_score'];
+        $next_points = $points + $answer_score; // Increase points by answer score
+        $answer_text = $answer['answer_text'];
+        $answer_text = str_replace('[name]', $form_name, $answer_text);
+    ?>
+    <?php if ($answer['answer_end'] == 1): ?>
+        <a href="results.php?form_id=<?php echo $form_id; ?>&points=<?php echo $next_points; ?>">
+            <button class="answer-button"><?php echo $answer_text; ?></button>
+        </a>
+    <?php else: ?>
+        <a href="index.php?form_id=<?php echo $form_id; ?>&form_name=<?php echo $form_name; ?>&questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
+            <button class="answer-button"><?php echo $answer_text; ?></button>
+        </a>
+    <?php endif; ?>
+<?php endforeach; ?>
+            </div>
         </div>
     </div>
-    <div class="foreground-image"></div>
 </body>
 <script>
 var isMuted = false;
@@ -133,20 +151,20 @@ function toggleMute() {
     const voices = synth.getVoices();
 
     if (isMuted) {
-    window.speechSynthesis.cancel();
-    muteBtn.textContent = 'Unmute';
-    muteBtn.src = muted;
-    isMuted = false;
+        window.speechSynthesis.cancel();
+        muteBtn.textContent = 'Unmute';
+        muteBtn.src = muted;
+        isMuted = false;
     } else {
-    var text = document.getElementById('question_text').textContent;
-    var utterance = new SpeechSynthesisUtterance(text);
-    utterance.voice = voices["Fred"];
-    utterance.volume = 0.2;
-    window.speechSynthesis.speak(utterance);
-    muteBtn.textContent = 'Mute';
-    muteBtn.src = unmuted;
-    isMuted = true;
+        var text = document.getElementById('question_text').textContent;
+        var utterance = new SpeechSynthesisUtterance(text);
+        utterance.voice = voices["Fred"];
+        utterance.volume = 0.2;
+        window.speechSynthesis.speak(utterance);
+        muteBtn.textContent = 'Mute';
+        muteBtn.src = unmuted;
+        isMuted = true;
     }
 }
-</script>    
+</script>
 </html>
