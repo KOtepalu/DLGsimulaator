@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="kysimus.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Front-end/results.css">
+    <title>DLG sisseastumisintervjuu simulaator</title>
 </head>
 <body>
-    <div class="pagecontainer">
-        <div class="container1">
-            <div class="category">Results</div>
-            <div class="figures"></div>
-            <div class="time"></div>
-        </div>
-        <div class="container2">
-            <div class="kysimused">
-                <h1>Results:</h1>
+    <div class="container">       
+        <p>Thank you for participating!</p>
+        <div class="textcontainer">
+            <div class="text">Your result:</div>
+            <div id="results" class="text">
                 <?php
-                    if (isset($_GET['points'])) {
-                        $points = $_GET['points'];
-                        echo "<p>Collected points: $points</p>";
-                    } else {
-                        echo "<p>No points collected.</p>";
-                    }
-                ?>
+                        if (isset($_GET['points'])) {
+                            $points = $_GET['points'];
+                            echo "$points / 100";
+                        } else {
+                            echo "No points.";
+                        }
+                    ?>
             </div>
         </div>
+        <div class="btncontainer">
+            <a href="edetabel.html"><button class="nosubmit">Don't share on leaderboard</button></a>
+            <a href="submit_your_name.html"><button class="submit">Share on leaderboard</button></a>
+        </div>
     </div>
-</body>    
+</body>
 </html>
