@@ -105,39 +105,41 @@ if (isset($_GET['form_id']) && isset($_GET['points']) && $answers[0]['answer_end
 <body>
     <div class="pagecontainer">
         <div class="container1">
-            <div class="category">Intro</div>
-            <div class="figures"><img src="sillaots_ja_callaghan.png" alt="figures"></div>
-            <div class="time" id="timer">00:00</div>
+            <div class="time" id="timer"></div>
         </div>
         <img src="../pics/unmute_50.png" alt="mute" class="mute" id="mute" onclick="toggleMute()">
         <div class="container2">
             <div class="kysimused">
-                <h1><?php echo $question; ?></h1>
+                <h2 id="question_text"><?php echo $question; ?></h2>
             </div>
-            <div class="points">
+            <!-- <div class="points">
                 <h2>Points: <?php echo $points; ?></h2>
-            </div>
-            <div class="button-group">
-            <?php foreach ($answers as $answer): ?>
-    <?php
-        $next_question_id = $answer['next_question_id'];
-        $answer_score = $answer['answer_score'];
-        $next_points = $points + $answer_score; // Increase points by answer score
-        $answer_text = $answer['answer_text'];
-        $answer_text = str_replace('[name]', $form_name, $answer_text);
-    ?>
-    <?php if ($answer['answer_end'] == 1): ?>
-        <a href="results.php?form_id=<?php echo $form_id; ?>&points=<?php echo $next_points; ?>">
-            <button class="answer-button"><?php echo $answer_text; ?></button>
-        </a>
-    <?php else: ?>
-        <a href="index.php?form_id=<?php echo $form_id; ?>&form_name=<?php echo $form_name; ?>&questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
-            <button class="answer-button"><?php echo $answer_text; ?></button>
-        </a>
-    <?php endif; ?>
-<?php endforeach; ?>
-            </div>
+            </div> -->
         </div>
+		<div class="figures">
+			<img src="../pics/ms_neutral1.0.png" alt="figures">
+			<img src="../pics/pc_neutral1.0.png" alt="figures">
+		</div> 
+        <div class="table">
+            <div class="button-group">
+                <?php foreach ($answers as $answer): ?>
+                    <?php
+                        $next_question_id = $answer['next_question_id'];
+                        $answer_score = $answer['answer_score'];
+                        $next_points = $points + $answer_score; // Increase points by answer score
+                    ?>
+                    <?php if ($answer['answer_end'] == 1): ?>
+                        <a href="results.php?points=<?php echo $next_points; ?>">
+                            <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
+                        </a>
+                    <?php else: ?>
+                        <a href="index.php?questionId=<?php echo $next_question_id; ?>&points=<?php echo $next_points; ?>">
+                            <button class="answer-button"><?php echo $answer['answer_text']; ?></button>
+                        </a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+       </div>
     </div>
 </body>
 <script>
