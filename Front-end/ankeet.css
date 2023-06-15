@@ -1,5 +1,5 @@
 body {
-    background-image: url("ankeet_blur.jpg");
+    background-image: url("../pics/taust_other.jpg");
     background-color: #CAD2C5;
     font-family: Verdana, sans-serif;
     height: 100vh;
@@ -83,7 +83,8 @@ input, select {
     position: relative;
     border-style: solid;
     cursor: pointer;
-   
+    grid-row: 2/3;
+    grid-column: 1/2;
 }
 
 #skip:hover {
@@ -102,6 +103,7 @@ input, select {
     cursor: pointer;
     color: white;
     position: relative;
+
 }
 
 #next:hover {
