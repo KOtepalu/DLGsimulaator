@@ -36,17 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($form_insert_stmt->execute()) {
             $new_form_id = $form_insert_stmt->insert_id;
             $form_insert_stmt->close();
-
-            $encoded_form_name = urlencode($form_name);
-            $encoded_form_age = urlencode($form_age);
-            $encoded_form_country = urlencode($form_country);
-            $encoded_form_education = urlencode($form_education);
-            $encoded_form_work = urlencode($form_work);
-            $encoded_form_hobby = urlencode($form_hobby);
-            $encoded_form_kids = urlencode($form_kids);
-
             
-            header("Location: start.php?form_id=$new_form_id&form_name=$encoded_form_name&form_age=$encoded_form_age&form_country=$encoded_form_country&form_education=$encoded_form_education&form_work=$encoded_form_work&form_hobby=$encoded_form_hobby&form_kids=$encoded_form_kids");
+            header("Location: index.php?questionId=1");
             exit;
         } else {
             echo "Error: " . $form_insert_stmt->error;
@@ -71,36 +62,39 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DLG sisseastumisintervjuu simulaator</title>
-    <link rel="stylesheet" href="general.css">
-    <link rel="stylesheet" href="ankeet.css">
+    <link rel="stylesheet" href="../Front-end/ankeet.css">
     <script src="ankeet.js" defer></script>
 </head>
 <body>
-    <div id="textcontainer">
-        <p>For a better interview experience, please fill out this form</p>
-        <form method="POST">
-            <label for="name_input">Name:</label>
-            <input type="text" id="name_input" name="name_input" placeholder="Name">
+<div id="textcontainer">
+        <p>Please fill out this form for a personalized interview experience. Fill only the fields that are relevant for you.</p>
+        <form method="POST" id="myForm">
+            <div id="content">
+                <label for="name_input">Name:</label>
+                <input type="text" id="name_input" name="name_input" placeholder="Name" required>
 
-            <label for="age_input">Age:</label>
-            <input type="number" id="age_input" name="age_input" placeholder="Age">
-            
-            <label for="country_input">Country:</label>
-            <input type="text" id="country_input" name="country_input" placeholder="Country">
-            
-            <label for="education_input">Education:</label>
-            <input type="text" id="education_input" name="education_input" placeholder="Education">
-            
-            <label for="work_input">Work:</label>
-            <input type="text" id="work_input" name="work_input" placeholder="Work">
-            
-            <label for="hobby_input">Hobby:</label>
-            <input type="text" id="hobby_input" name="hobby_input" placeholder="Hobby">
-            
-            <label for="kids_input">Kids:</label>
-            <input type="number" id="kids_input" name="kids_input" placeholder="Number of Kids">
+                <label for="age_input">Age:</label>
+                <input type="number" id="age_input" name="age_input" placeholder="Age">
+                
+                <label for="country_input">Country:</label>
+                <input type="text" id="country_input" name="country_input" placeholder="Country">
+                
+                <label for="education_input">Education:</label>
+                <input type="text" id="education_input" name="education_input" placeholder="Education">
+                
+                <label for="work_input">Work:</label>
+                <input type="text" id="work_input" name="work_input" placeholder="Work">
+                
+                <label for="hobby_input">Hobby:</label>
+                <input type="text" id="hobby_input" name="hobby_input" placeholder="Hobby">
 
-            <button type="submit" id="next" name="form_submit" >NEXT</button>
+            
+                <label for="kids_input">Kids:</label>
+                <input type="number" id="kids_input" name="kids_input" placeholder="Number of Kids">
+
+                <button type="submit" id="next" name="form_submit" >NEXT</button>
+
+            </div>
         </form>
         <a href="start.php"><button id="skip">SKIP</button></a>
     </div>
