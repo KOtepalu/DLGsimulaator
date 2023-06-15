@@ -14,8 +14,8 @@
             <div class="text">Your result:</div>
             <div id="results" class="text">
                 <?php
-                        if (isset($_GET['points'])) {
-                            $points = $_GET['points'];
+                        if (isset($_POST['points'])) {
+                            $points = $_POST['points'];
                             echo "$points / 100";
                         } else {
                             echo "No points.";
@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="btncontainer">
-            <a href="edetabel.html"><button class="nosubmit">Don't share on leaderboard</button></a>
-            <a href="submit_your_name.html"><button class="submit">Share on leaderboard</button></a>
+            <a href="edetabel.php"><button class="nosubmit">Don't share on leaderboard</button></a>
+            <a href="../Front-end/submit_your_name.html"><button class="submit">Share on leaderboard</button></a>
         </div>
     </div>
 </body>
