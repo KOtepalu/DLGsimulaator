@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 p{
@@ -22,6 +23,7 @@ p{
     margin: 10px;
     height: fit-content;
     text-align: center;
+    max-width: 400px;
 }
 
 form{
@@ -38,9 +40,9 @@ form{
 
 #content {
     display: grid;
-    grid-template-columns: 10vh 30vh;
+    grid-template-columns: 10vh auto;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
 
 }
 
@@ -77,14 +79,14 @@ input, select {
     margin-right: 5px;
     padding: 8px 16px;
     color: #fff;
-    background-color: #ffde79;
-    border-color: #ffde79;
+    background-color: #F7CA18;
+    border-color: #F7CA18;
     border-radius: 10px;
     position: relative;
     border-style: solid;
     cursor: pointer;
-    grid-row: 2/3;
-    grid-column: 1/2;
+    width: 130px;
+    margin-top: 25px;
 }
 
 #skip:hover {
@@ -94,7 +96,7 @@ input, select {
 }
 
 #next {
-    margin-left: 5px;
+    margin-left: 100px;
     padding: 8px 16px;
     background-color: #84A98C;
     border-color: #84A98C;
@@ -103,7 +105,8 @@ input, select {
     cursor: pointer;
     color: white;
     position: relative;
-
+    width: 130px;
+    margin-top: 25px;
 }
 
 #next:hover {
@@ -113,14 +116,10 @@ input, select {
 }
 
 #textcontainer {
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: bottom; */ 
-    display: grid;
-    grid-template-rows: 6vh auto 3vh;
-    grid-template-columns: 30vh 12vh;
-    grid-gap: 20px; 
+    align-items: bottom;
     background-color: rgba(53,79,82,0.6);
     border-radius: 10px;
     padding: 16px;
@@ -129,5 +128,4 @@ input, select {
     max-width: 90%;
     width: fit-content;
     height: fit-content;
-    }  
-
+}
