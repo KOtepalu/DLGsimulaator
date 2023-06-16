@@ -67,30 +67,30 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
 </head>
 <body>
     <div id="textcontainer">
-        <p>Please fill out this form for a personalized interview experience. Fill only the fields that are relevant for you.</p>
+        <p>Please fill out this form for a personalized interview experience.</p>
         <form method="POST" id="myForm">
             <div id="content">
                 <label for="name_input">Name:</label>
-                <input type="text" id="name_input" name="name_input" placeholder="Name">
+                <input type="text" id="name_input" name="name_input" placeholder="Name" required>
 
                 <label for="age_input">Age:</label>
-                <input type="number" id="age_input" name="age_input" placeholder="Age">
+                <input type="number" id="age_input" name="age_input" placeholder="Age" required>
                 
                 <label for="country_input">Country:</label>
-                <input type="text" id="country_input" name="country_input" placeholder="Country">
+                <input type="text" id="country_input" name="country_input" placeholder="Country" required>
                 
                 <label for="education_input">Education:</label>
-                <input type="text" id="education_input" name="education_input" placeholder="Education">
+                <input type="text" id="education_input" name="education_input" placeholder="Education" required>
                 
                 <label for="work_input">Work:</label>
-                <input type="text" id="work_input" name="work_input" placeholder="Work">
+                <input type="text" id="work_input" name="work_input" placeholder="Work" required>
                 
                 <label for="hobby_input">Hobby:</label>
-                <input type="text" id="hobby_input" name="hobby_input" placeholder="Hobby">
+                <input type="text" id="hobby_input" name="hobby_input" placeholder="Hobby" required>
 
             
                 <label for="kids_input">Kids:</label>
-                <input type="number" id="kids_input" name="kids_input" placeholder="Number of Kids">
+                <input type="number" id="kids_input" name="kids_input" placeholder="Number of Kids" required>
                 <br>
             </div>
         </form>
