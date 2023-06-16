@@ -158,6 +158,12 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
                         if ($_SESSION['form_kids'] !== '') {
                             $answer_text = str_replace('[X]', $_SESSION['form_kids'], $answer_text);
                         }
+		        if ($_SESSION['form_kids'] > 1) {
+                            $answer_text = str_replace('[s]', 's', $answer_text);
+                        }
+                        if ($_SESSION['form_kids'] == 1) {
+                            $answer_text = str_replace('[s]', '', $answer_text);
+                        }
                     ?>
 
              <?php if ($answer['answer_end'] == 1 && !strpos($answer_text, '[name]') && !strpos($answer_text, '[age]') && !strpos($answer_text, '[country]') && !strpos($answer_text, '[education]') && !strpos($answer_text, '[work]') && !strpos($answer_text, '[hobby]') && !strpos($answer_text, '[X]')): ?>
