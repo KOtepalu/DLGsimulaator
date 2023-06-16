@@ -35,7 +35,7 @@
 
                     // Retrieve the results from the User_Result table and sort them by score in descending order,
                     // and if scores are the same, sort by result_time in ascending order
-                    $results_query = "SELECT result_id, result_score, result_time, result_name FROM User_Result ORDER BY result_score DESC, result_time ASC LIMIT 10";
+                    $results_query = "SELECT result_id, result_score, result_time, result_name FROM User_Result WHERE deleted = 0 ORDER BY result_score DESC, result_time ASC LIMIT 10";
                     $results_result = $conn->query($results_query);
 
                     // Display the results
