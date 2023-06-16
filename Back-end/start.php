@@ -1,16 +1,17 @@
 <?php
+
+session_start();
 // Retrieve the form_id from the URL
-$form_id = $_GET['form_id'];
 
 
-$form_name = $_GET['form_name'];
-$form_age = $_GET['form_age'];
-$form_country = $_GET['form_country'];
-$form_education = $_GET['form_education'];
-$form_work = $_GET['form_work'];
-$form_hobby = $_GET['form_hobby'];
-$form_kids = $_GET['form_kids'];
-
+$new_form_id = $_SESSION['form_id'] ?? "";
+$form_name = $_SESSION['form_name'] ?? "";
+$form_age = $_SESSION['form_age'] ?? "";
+$form_country = $_SESSION['form_country'] ?? "";
+$form_education = $_SESSION['form_education'] ?? "";
+$form_work = $_SESSION['form_work'] ?? "";
+$form_hobby = $_SESSION['form_hobby'] ?? "";
+$form_kids = $_SESSION['form_kids'] ?? "";
 
 ?>
 
@@ -25,7 +26,20 @@ $form_kids = $_GET['form_kids'];
 <body>
     <h1>Welcome to the Interview Simulator!</h1>
     <p>Your form has been submitted successfully.</p>
-    <form action="index.php" method="GET">
+
+    <h2>Session Values:</h2>
+    <ul>
+        <li>Name: <?php echo $form_name; ?></li>
+        <li>Age: <?php echo $form_age; ?></li>
+        <li>Country: <?php echo $form_country; ?></li>
+        <li>Education: <?php echo $form_education; ?></li>
+        <li>Work: <?php echo $form_work; ?></li>
+        <li>Hobby: <?php echo $form_hobby; ?></li>
+        <li>Kids: <?php echo $form_kids; ?></li>
+        <li>form_id: <?php echo $new_form_id; ?></li>
+    </ul>
+    
+    <form action="index.php" method="POST">
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
         <input type="hidden" name="form_name" value="<?php echo $form_name; ?>">
         <input type="hidden" name="form_age" value="<?php echo $form_age; ?>">
@@ -34,6 +48,7 @@ $form_kids = $_GET['form_kids'];
         <input type="hidden" name="form_work" value="<?php echo $form_work; ?>">
         <input type="hidden" name="form_hobby" value="<?php echo $form_hobby; ?>">
         <input type="hidden" name="form_kids" value="<?php echo $form_kids; ?>">
+        <input type="hidden" name="form_id" value="<?php echo $new_form_id; ?>">
         <button type="submit">Begin</button>
     </form>
 </body>

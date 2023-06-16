@@ -1,16 +1,18 @@
 <?php
+
+session_start();
 $servername = "localhost";
 $username = "if22";
 $password = "if22pass";
 $dbname = "if22_DLGsimulaator";
 
-$form_name = null;
-$form_age = null;
-$form_country = null;
-$form_education = null;
-$form_work = null;
-$form_hobby = null;
-$form_kids = null;
+$form_name = $_SESSION['form_name'] ?? null;
+$form_age = $_SESSION['form_age'] ?? null;
+$form_country = $_SESSION['form_country'] ?? null;
+$form_education = $_SESSION['form_education'] ?? null;
+$form_work = $_SESSION['form_work'] ?? null;
+$form_hobby = $_SESSION['form_hobby'] ?? null;
+$form_kids = $_SESSION['form_kids'] ?? null;
 
 // Ankeedi sisu salvestamine
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,6 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_work = $_POST["work_input"];
         $form_hobby = $_POST["hobby_input"];
         $form_kids = $_POST["kids_input"];
+
+        $_SESSION['form_name'] = $form_name;
+        $_SESSION['form_age'] = $form_age;
+        $_SESSION['form_country'] = $form_country;
+        $_SESSION['form_education'] = $form_education;
+        $_SESSION['form_work'] = $form_work;
+        $_SESSION['form_hobby'] = $form_hobby;
+        $_SESSION['form_kids'] = $form_kids;
+        
 
         $conn = new mysqli($servername, $username, $password, $dbname);
         $conn->set_charset("utf8");
@@ -36,8 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($form_insert_stmt->execute()) {
             $new_form_id = $form_insert_stmt->insert_id;
             $form_insert_stmt->close();
+
+            $_SESSION['form_id'] = $new_form_id;
             
-            header("Location: index.php?questionId=1");
+            header("Location: start.php");
             exit;
         } else {
             echo "Error: " . $form_insert_stmt->error;
