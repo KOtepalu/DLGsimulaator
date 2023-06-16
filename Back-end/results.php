@@ -25,7 +25,7 @@
         </div>
         <div class="btncontainer">
             <a href="edetabel.php"><button class="nosubmit">Don't share on leaderboard</button></a>
-            <a href="../Front-end/submit_your_name.html"><button class="submit">Share on leaderboard</button></a>
+            <a href="submit_your_name.php"><button class="submit">Share on leaderboard</button></a>
         </div>
     </div>
 </body>
