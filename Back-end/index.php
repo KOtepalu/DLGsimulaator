@@ -107,6 +107,21 @@ if ($result->num_rows > 0) {
                         $next_question_id = $answer['next_question_id'];
                         $answer_score = $answer['answer_score'];
                         $next_points = $points + $answer_score; // Increase points by answer score
+                        $answer_text = $answer['answer_text'];
+                        roundScore($next_points);
+                        
+                        $answer_text = str_replace('[name]', $_SESSION['form_name'], $answer_text);
+                        $answer_text = str_replace('[age]', $_SESSION['form_age'], $answer_text);
+                        $answer_text = str_replace('[country]', $_SESSION['form_country'], $answer_text);
+                        $answer_text = str_replace('[education]', $_SESSION['form_education'], $answer_text);
+                        $answer_text = str_replace('[work]', $_SESSION['form_work'], $answer_text);
+                        $answer_text = str_replace('[hobby]', $_SESSION['form_hobby'], $answer_text);
+                        $answer_text = str_replace('[X]', $_SESSION['form_kids'], $answer_text);
+
+                        if ($_SESSION['form_kids'] === "0" && strpos($answer_text, '[X]') !== false) {
+                            continue;
+                        }
+
                     ?>
                     <?php if ($answer['answer_end'] == 1): ?>
                         <form action="results.php" method="POST">
