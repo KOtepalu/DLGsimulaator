@@ -2,11 +2,12 @@ body {
 	background-color: #CAD2C5;
 	color: #000;
 	font-family: Verdana, sans-serif;
-	background-image: url("pics/mare_taust_blur.jpg");
-	height: 100%;
+	background-image: url("../pics/taust_other.jpg");
+	height: 100vh;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	margin: 0;
 }
 
 .pagecontainer {
@@ -77,3 +78,6 @@ body {
 	margin: 20px;
 }
 
+a {
+	text-decoration: none;
+}
