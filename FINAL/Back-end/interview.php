@@ -19,6 +19,12 @@ $form_work = $_SESSION['form_work'] ?? "";
 $form_hobby = $_SESSION['form_hobby'] ?? "";
 $form_kids = $_SESSION['form_kids'] ?? "";
 
+if (isset($_GET['form_id'])) {
+    $form_id = $_GET['form_id'];
+} else {
+    $form_id = 0; // Default form_id
+}
+
 function getQuestion($questionId){
     global $conn;
     $sql = "SELECT `question_text` FROM `Question` WHERE `question_id` = $questionId";
@@ -116,26 +122,6 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
             <?php
             $figure_1 = "../pics/ms_neutral1.0.png";
             $figure_2 = "../pics/pc_neutral1.0.png";
-            if (isset($_GET['points'])) {
-                $points = $_GET['points'];
-                $next_points = $points + $answer_score; // Calculate next points
-
-                if ($next_points > $points) {
-                    $figure_1 = "../pics/ms_happy1.0.png";
-                    $figure_2 = "../pics/pc_happy1.0.png";
-                    $hasPositiveFigure = true;
-                } elseif ($next_points < $points) {
-                    $figure_1 = "../pics/ms_negative1.0.png";
-                    $figure_2 = "../pics/pc_negative1.0.png";
-                    $hasNegativeFigure = true;
-                }
-            }
-
-            if (!$hasPositiveFigure && !$hasNegativeFigure) {
-                // Set figures to neutral if neither positive nor negative figure is found
-                $figure_1 = "../pics/ms_neutral1.0.png";
-                $figure_2 = "../pics/pc_neutral1.0.png";
-            } 
             ?>
             <img src="<?php echo $figure_1; ?>" alt="figures">
             <img src="<?php echo $figure_2; ?>" alt="figures">
@@ -180,7 +166,7 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
                     <button class="answer-button" type="submit"><?php echo $answer_text; ?></button>
                   </form>
              <?php elseif (!strpos($answer_text, '[name]') && !strpos($answer_text, '[age]') && !strpos($answer_text, '[country]') && !strpos($answer_text, '[education]') && !strpos($answer_text, '[work]') && !strpos($answer_text, '[hobby]') && !strpos($answer_text, '[X]')): ?>
-                  <form action="TESTindex.php" method="POST">
+                  <form action="interview.php" method="POST">
                       <input type="hidden" name="questionId" value="<?php echo $next_question_id; ?>">
                       <input type="hidden" name="points" value="<?php echo $next_points; ?>">
                       <button class="answer-button" type="submit"><?php echo $answer_text; ?></button>

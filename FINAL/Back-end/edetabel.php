@@ -35,20 +35,22 @@
 
                     // Retrieve the results from the User_Result table and sort them by score in descending order,
                     // and if scores are the same, sort by result_time in ascending order
-                    $results_query = "SELECT result_id, result_score, result_time, result_name FROM User_Result ORDER BY result_score DESC, result_time ASC";
+                    $results_query = "SELECT result_id, result_score, result_time, result_name FROM User_Result ORDER BY result_score DESC, result_time ASC LIMIT 10";
                     $results_result = $conn->query($results_query);
 
                     // Display the results
                     if ($results_result->num_rows > 0) {
                         $rank = 1;
                         while ($row = $results_result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $rank . "</td>";
-                            echo "<td>" . $row["result_name"] . "</td>";
-                            echo "<td>" . $row["result_score"] . "</td>";
-                            echo "<td>" . $row["result_time"] . "</td>";
-                            echo "</tr>";
-                            $rank++;
+
+                           		echo "<tr>";
+                            		echo "<td>" . $rank . "</td>";
+                            		echo "<td>" . $row["result_name"] . "</td>";
+                            		echo "<td>" . $row["result_score"] . "</td>";
+                            		echo "<td>" . $row["result_time"] . "</td>";
+                            		echo "</tr>";
+                            		$rank++;
+				
                         }
                     } else {
                         echo "<tr><td colspan='4'>No results found.</td></tr>";
