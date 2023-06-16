@@ -29,3 +29,8 @@ if (localStorage.getItem('timerValue')) {
       }
     }, 1000);
   }
+  function resetTimer() {
+    clearInterval(timerInterval); 
+    localStorage.removeItem('timerValue'); 
+    startTimer(20 * 60); 
+  }
