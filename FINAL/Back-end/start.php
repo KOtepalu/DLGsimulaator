@@ -30,7 +30,7 @@ $form_kids = $_SESSION['form_kids'] ?? "";
       <p>Welcome to the Interview Simulator!</p>
       <p>Your form has been submitted successfully.</p>
   
-    <form action="index.php" method="POST">
+    <form action="interview.php" method="POST">
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
         <input type="hidden" name="form_name" value="<?php echo $form_name; ?>">
         <input type="hidden" name="form_age" value="<?php echo $form_age; ?>">
