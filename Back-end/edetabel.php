@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="edetabel.css">
-    <link rel="stylesheet" href="tabel.css">
+    <link rel="stylesheet" href="../Front-end/edetabel.css">
+    <link rel="stylesheet" href="../Front-end/tabel.css">
 </head>
 <body>
     <div class="pagecontainer">
@@ -63,8 +63,8 @@
         <div class="sidebar">
             <div class="message"><p>You're in 4th place!</p></div>
             <div class="button-group">
-                <button class="answer-button" id="option1">Share</button>
-                <button class="answer-button" id="option2">Try again?</button>
+                <a href="../Front-end/share.html"><button class="answer-button" id="option1">Share</button></a>
+                <a href="../Front-end/begin.html"><button class="answer-button" id="option2">Try again?</button></a>
             </div>
         </div>
     </div>
