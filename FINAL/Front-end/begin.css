@@ -1,0 +1,47 @@
+body {
+    background-image: url("../pics/taust_other.jpg");
+    font-family: Verdana, sans-serif;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+#textcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(53,79,82,0.6);
+    border-radius: 10px;
+    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    text-align: center;
+    overflow: show;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+#button {
+    margin-top: 16px;
+    padding: 12px 24px;
+    background-color: rgba(132, 169, 140, 0.6);
+    border-color: #84A98C;
+    border-radius: 10px;
+    border-style: solid;
+    cursor: pointer;
+    color: white;
+}
+
+#button:hover {
+    color: #fff;
+    border-color: #38534d;
+    background-color: rgba(82, 121, 111,0.8);
+}
