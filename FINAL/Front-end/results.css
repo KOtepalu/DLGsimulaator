@@ -1,0 +1,82 @@
+body {
+    background-image: url("../pics/taust_other.jpg");
+    font-family: Verdana, sans-serif;
+    height: 100vh;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    margin: 0;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: 3vh auto 2vh;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(53,79,82,0.6);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+}
+
+p{
+    grid-row: 1/2;
+    text-align: center;
+}
+
+.textcontainer{
+    grid-row: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.text{
+    padding: 10px;
+}
+
+.btncontainer{
+    grid-row: 3/4;
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    padding: 5px;
+}
+
+button{
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 12px; 
+    border-style:solid;
+}
+
+.nosubmit{
+    color: black;
+    background-color: #ffe8a3bd;
+    border-color: #FFE8A3;
+    font-size: 13px;
+}
+
+.submit{
+    color: #fff;
+    background-color: #84a98cb2;
+    border-color: #84A98C;
+}
+
+.nosubmit:hover{
+    border-color: #ffde79;
+    background-color: #ffde79b2;
+    color: black;
+}
+
+.submit:hover{
+    background-color: #46676bb2;
+    border-color:  #354F52;
+}
