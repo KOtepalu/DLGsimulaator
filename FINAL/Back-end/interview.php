@@ -241,5 +241,9 @@ function toggleMute() {
         isMuted = true;
     }
 }
+	// tagasinupule vajutades viib intervjuu algusesse ja kustutab kogutud punktid
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
 </script>
 </html>
