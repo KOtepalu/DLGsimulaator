@@ -49,6 +49,8 @@ if (isset($_POST['name_input'], $_POST['points'])) {
             echo "Error inserting name: " . $conn->error;
         }
     }
+    header("Location: edetabel.php");
+    exit;
 } else {
     echo "Name and points not set.";
 }
@@ -64,17 +66,18 @@ $conn->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DLG sisseastumisintervjuu simulaator</title>
-    <link rel="stylesheet" href="../Front-end/submit_your_name.css">
+    <link rel="stylesheet" href="../Front-end/submitname.css">
 </head>
 <body>
     <div id="textcontainer">
         <p>Submit your name for the leaderboard</p>
-        <form method="POST" id="myName" action="edetabel.php">
+        <form method="POST" id="myName" action="submitname.php">
             <label for="name_input">Name:</label>
             <input type="text" id="name_input" name="name_input" placeholder="Name" required>
             <input type="hidden" name="points" value="<?php echo $points; ?>">
             <a href="results.php"><button id="skip">BACK</button></a>
-            <button form="myName" type="submit" id="next" name="form_submit">SUBMIT</button>
+            <button form="myName" type="submit" id="name_result" name="form_submit">SUBMIT</button>
+            
         </form>
         <div>
             <p>Session values:</p>

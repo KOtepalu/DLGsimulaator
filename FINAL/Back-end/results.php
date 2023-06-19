@@ -1,3 +1,15 @@
+
+<?php
+session_start();
+
+$new_form_id = $_SESSION['form_id'] ?? "";
+
+if (isset($_POST['points'])) {
+    $points = $_POST['points'];
+    $_SESSION['points'] = $points;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +37,10 @@
         </div>
         <div class="btncontainer">
             <a href="edetabel.php"><button class="nosubmit">Don't share on leaderboard</button></a>
-            <a href="submitname.php"><button class="submit">Share on leaderboard</button></a>
+            <form action="submitname.php" method="POST">
+                <input type="hidden" name="points" value="<?php echo $points; ?>">
+                <button type="submit" class="submit">Share on leaderboard</button>
+            </form>
         </div>
     </div>
 </body>
