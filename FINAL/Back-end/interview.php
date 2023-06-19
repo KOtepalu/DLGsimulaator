@@ -40,7 +40,25 @@ function getQuestion($questionId){
 function getAnswers($questionId){
     global $conn;
     $answers_list = [];
+    $stmt = $conn->prepare("SELECT answer_text, next_question_id, answer_score , answer_end FROM Answer WHERE Question_question_id = ?");
+    echo $conn->error;
+    $stmt->bind_param("i", $questionId);
+    $stmt->bind_result($answer_text_from_db, $next_question_id_from_db, $answer_score_from_db, $answer_end_from_db);
+    $stmt->execute();
+    echo $stmt->error;
+    while($stmt->fetch()){
+         $answers_list[] = [
+                "answer_text" => $answer_text_from_db,
+                "next_question_id" => $next_question_id_from_db,
+                "answer_score" => $answer_score_from_db,
+                "answer_end" => $answer_end_from_db
+            ];
+    }
+    $stmt->close();
 
+
+
+/* 
     $sql = "SELECT `answer_text`, `next_question_id`, `answer_score` , `answer_end` FROM `Answer` WHERE `Question_question_id` = $questionId";
     $result = $conn->query($sql);
 
@@ -53,7 +71,7 @@ function getAnswers($questionId){
                 "answer_end" => $row["answer_end"]
             ];
         }
-    }
+    } */
     return $answers_list;
 }
 
@@ -80,6 +98,7 @@ function roundScore(&$score) {
 // Retrieve the points from the URL parameter
 if (isset($_POST['points'])) {
     $points = $_POST['points'];
+    echo $_POST['points'];
 } else {
     $points = 80; // Default starting points
 }
@@ -97,38 +116,8 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
         echo "Error inserting data: " . $conn->error;
     }
 }
-	// FIGURES
-$ms_pos = "../pics/ms_happy1.0.png";
-$ms_neg = "../pics/ms_negative1.0.png";
-$ms_neut = "../pics/ms_neutral1.0.png";
-$pc_pos = "../pics/pc_happy1.0.png";
-$pc_neg = "../pics/pc_negative1.0.png";
-$pc_neut = "../pics/pc_neutral1.0.png";
-$msFigure = "";
-$pcFigure = "";
 
-if (isset($_POST['answer_score'])) {
-    $selectedAnswerScore = $_POST['answer_score'];
-    $msFigure = $ms_neut;
-    $pcFigure = $pc_neut;
 
-    echo "Score: " . $selectedAnswerScore . "<br>"; // Debugging statement
-        
-    if ($selectedAnswerScore >= 1) {
-        $msFigure = $ms_pos;
-        $pcFigure = $pc_pos; 
-        echo "Positive Figures<br>"; // Debugging statement
-    } else if($selectedAnswerScore === 0) {
-        $msFigure = $ms_neut;
-        $pcFigure = $pc_neut;
-        echo "Neutral Figures<br>"; // Debugging statement
-    } else {
-        $msFigure = $ms_neg;
-        $pcFigure = $pc_neg;
-        echo "Negative Figures<br>"; // Debugging statement
-    }
-    var_dump($msFigure, $pcFigure);
-}
 ?>
 
 <!DOCTYPE html>
@@ -150,70 +139,80 @@ if (isset($_POST['answer_score'])) {
             </div>
         </div>
         <div class="figures">
-          <!-- semi broken -->
-            <?php
-            $figure_1 = "../pics/ms_neutral1.0.png";
-            $figure_2 = "../pics/pc_neutral1.0.png";
-            ?>
-            <img src="<?php echo $figure_1; ?>" alt="figures">
-            <img src="<?php echo $figure_2; ?>" alt="figures">
-        </div>
+    <?php
+    $figure_1 = "../pics/ms_neutral1.0.png";
+    $figure_2 = "../pics/pc_neutral1.0.png";
+
+    // Determine the figure based on the change in points
+    if ($points > $_SESSION['previous_points']) {
+        $figure_1 = "../pics/ms_happy1.0.png";
+        $figure_2 = "../pics/pc_happy1.0.png";
+    } elseif ($points < $_SESSION['previous_points']) {
+        $figure_1 = "../pics/ms_negative1.0.png";
+        $figure_2 = "../pics/pc_negative1.0.png";
+    }
+    $_SESSION['previous_points'] = $points; // Store the current points for future comparison
+    ?>
+
+    <img src="<?php echo $figure_1; ?>" alt="figures">
+    <img src="<?php echo $figure_2; ?>" alt="figures">
+</div>
         <div class="table">
-            <div class="button-group">
-                <?php foreach ($answers as $answer): ?>
-                    <?php
+    <div class="button-group">
+        <?php foreach ($answers as $answer): ?>
+            <?php
+                $next_question_id = $answer['next_question_id'];
+                $answer_score = $answer['answer_score'];
+                $next_points = $points + $answer_score; // Increase points by answer score
+                $answer_text = $answer['answer_text'];
+                roundScore($next_points);
 
-                        $next_question_id = $answer['next_question_id'];
-                        $answer_score = $answer['answer_score'];
-                        $next_points = $points + $answer_score; // Increase points by answer score
-                        $answer_text = $answer['answer_text'];
-                        roundScore($next_points);
-                        
-                        if ($_SESSION['form_name'] !== '') {
-                            $answer_text = str_replace('[name]', $_SESSION['form_name'], $answer_text);
-                        }
-                        if ($_SESSION['form_age'] !== '') {
-                            $answer_text = str_replace('[age]', $_SESSION['form_age'], $answer_text);
-                        }
-                        if ($_SESSION['form_country'] !== '') {
-                            $answer_text = str_replace('[country]', $_SESSION['form_country'], $answer_text);
-                        }
-                        if ($_SESSION['form_education'] !== '') {
-                            $answer_text = str_replace('[education]', $_SESSION['form_education'], $answer_text);
-                        }
-                        if ($_SESSION['form_work'] !== '') {
-                            $answer_text = str_replace('[work]', $_SESSION['form_work'], $answer_text);
-                        }
-                        if ($_SESSION['form_hobby'] !== '') {
-                            $answer_text = str_replace('[hobby]', $_SESSION['form_hobby'], $answer_text);
-                        }
-                        if ($_SESSION['form_kids'] !== '') {
-                            $answer_text = str_replace('[X]', $_SESSION['form_kids'], $answer_text);
-                        }
-		        if ($_SESSION['form_kids'] > 1) {
-                            $answer_text = str_replace('[s]', 's', $answer_text);
-                        }
-                        if ($_SESSION['form_kids'] == 1) {
-                            $answer_text = str_replace('[s]', '', $answer_text);
-                        }
-                    ?>
+                if ($_SESSION['form_name'] !== '') {
+                    $answer_text = str_replace('[name]', $_SESSION['form_name'], $answer_text);
+                }
+                if ($_SESSION['form_age'] !== '') {
+                    $answer_text = str_replace('[age]', $_SESSION['form_age'], $answer_text);
+                }
+                if ($_SESSION['form_country'] !== '') {
+                    $answer_text = str_replace('[country]', $_SESSION['form_country'], $answer_text);
+                }
+                if ($_SESSION['form_education'] !== '') {
+                    $answer_text = str_replace('[education]', $_SESSION['form_education'], $answer_text);
+                }
+                if ($_SESSION['form_work'] !== '') {
+                    $answer_text = str_replace('[work]', $_SESSION['form_work'], $answer_text);
+                }
+                if ($_SESSION['form_hobby'] !== '') {
+                    $answer_text = str_replace('[hobby]', $_SESSION['form_hobby'], $answer_text);
+                }
+                if ($_SESSION['form_kids'] !== '') {
+                    $answer_text = str_replace('[X]', $_SESSION['form_kids'], $answer_text);
+                }
+                if ($_SESSION['form_kids'] > 1) {
+                    $answer_text = str_replace('[s]', 's', $answer_text);
+                }
+                if ($_SESSION['form_kids'] == 1) {
+                    $answer_text = str_replace('[s]', '', $answer_text);
+                }
+                $_SESSION['previous_points'] = $points;
+            ?>
 
-             <?php if ($answer['answer_end'] == 1 && !strpos($answer_text, '[name]') && !strpos($answer_text, '[age]') && !strpos($answer_text, '[country]') && !strpos($answer_text, '[education]') && !strpos($answer_text, '[work]') && !strpos($answer_text, '[hobby]') && !strpos($answer_text, '[X]')): ?>
-                  <form action="results.php" method="POST">
+            <?php if ($answer['answer_end'] == 1 && !strpos($answer_text, '[name]') && !strpos($answer_text, '[age]') && !strpos($answer_text, '[country]') && !strpos($answer_text, '[education]') && !strpos($answer_text, '[work]') && !strpos($answer_text, '[hobby]') && !strpos($answer_text, '[X]')): ?>
+                <form action="results.php" method="POST">
                     <input type="hidden" name="points" value="<?php echo $next_points; ?>">
                     <button class="answer-button" type="submit"><?php echo $answer_text; ?></button>
-                  </form>
-             <?php elseif (!strpos($answer_text, '[name]') && !strpos($answer_text, '[age]') && !strpos($answer_text, '[country]') && !strpos($answer_text, '[education]') && !strpos($answer_text, '[work]') && !strpos($answer_text, '[hobby]') && !strpos($answer_text, '[X]')): ?>
-                  <form action="interview.php" method="POST">
-                      <input type="hidden" name="questionId" value="<?php echo $next_question_id; ?>">
-                      <input type="hidden" name="points" value="<?php echo $next_points; ?>">
-                      <button class="answer-button" type="submit"><?php echo $answer_text; ?></button>
-                  </form>
-              <?php endif; ?>
-            <?php endforeach; ?>
-            </div>
-        </div>
+                </form>
+            <?php elseif (!strpos($answer_text, '[name]') && !strpos($answer_text, '[age]') && !strpos($answer_text, '[country]') && !strpos($answer_text, '[education]') && !strpos($answer_text, '[work]') && !strpos($answer_text, '[hobby]') && !strpos($answer_text, '[X]')): ?>
+                <form action="interview.php" method="POST">
+                    <input type="hidden" name="questionId" value="<?php echo $next_question_id; ?>">
+                    <input type="hidden" name="points" value="<?php echo $next_points; ?>">
+                    <button class="answer-button" type="submit"><?php echo $answer_text; ?></button>
+                </form>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
+</div>
+</div>
 </body>
 <script>
 var isMuted = false;
@@ -241,7 +240,6 @@ function toggleMute() {
         isMuted = true;
     }
 }
-	// tagasinupule vajutades viib intervjuu algusesse ja kustutab kogutud punktid
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
