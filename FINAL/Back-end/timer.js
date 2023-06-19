@@ -1,4 +1,5 @@
 var timerInterval;
+var initialDuration = 20 * 60;
 
 if (localStorage.getItem('timerValue')) {
   var timerValue = localStorage.getItem('timerValue');
@@ -36,3 +37,17 @@ function resetTimer() {
   localStorage.removeItem('timerValue');
   startTimer(20 * 60);
 }
+
+function calculateTimePassed() {
+  var timerValue = localStorage.getItem('timerValue');
+  var elapsedTime = initialDuration - timerValue;
+  return elapsedTime;
+}
+
+
+// peaks minema results.php lehele
+
+/* <script>
+var timePassed = calculateTimePassed();
+console.log("Time passed: " + timePassed + " seconds");
+</script> */
