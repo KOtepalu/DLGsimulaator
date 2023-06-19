@@ -91,8 +91,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="edetabel.css">
-    <link rel="stylesheet" href="tabel.css">    
+    <link rel="stylesheet" href="../Front-end/edetabel.css">
+    <link rel="stylesheet" href="../Front-end/tabel.css">    
 </head>
 <body>
     <div class="pagecontainer">
