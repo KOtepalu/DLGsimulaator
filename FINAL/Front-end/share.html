@@ -5,20 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="share.css">
+<script src="../Back-end/share.js"></script>
 <title>Share</title>
 </head>
 <body>
     <div id="container">
         <div id="textcontainer">Share your results!</div>
         <div id="buttoncontainer">
-            <button id="messnger" class="white">Messenger</button>
-            <button id="copy" class="white">Copy</button>
-            <button id="facebook" class="blue">Facebook</button>
-            <button id="twitter" class="blue">Twitter</button>
-            <button id="instagram" class="white">Instagram</button>
-            <button id="email" class="white">Email</button>
-            <button id="whatsapp" class="green">WhatsApp</button>
-            <button id="snapchat" class="yellow">Snapchat</button>
+            <button id="copy" onclick="copyToClipboard()" class="white">Copy Link</button>
+            <input type="hidden" value="https://dlg.tlu.ee/games/interview/" id="linkInput" readonly>
+            <a href="https://www.facebook.com/sharer.php?u=https://dlg.tlu.ee/games/interview/" target="_blank"><button id="facebook" class="blue">Facebook</button></a>
+            <a href="https://twitter.com/share?url=https://dlg.tlu.ee/games/interview/"><button id="twitter" class="blue">Twitter</button></a>
         </div>
         <div id="backbtn">
             <a href="../Back-end/edetabel.php"><button id="back">Back</button></a>
@@ -26,3 +23,5 @@
     </div>
 </body>
 </html>
+
+<!-- https://dlg.tlu.ee/games/interview/ -->
