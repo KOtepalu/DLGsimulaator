@@ -7,9 +7,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
-}
-
-p{
     color: white;
 }
 
@@ -24,7 +21,6 @@ form {
 }
 
 label {
-    color: white;
     grid-column: 1 / 2;
     text-align: left;
     padding-left: 10px;
@@ -42,25 +38,24 @@ input {
 #skip {
     padding: 8px 16px;
     color: #fff;
-    background-color: rgba(255,222,121,0.7);
-    border-color: #ffde79;
+    background-color: rgba(255, 157, 100, 0.6);;
+    border-color: #f59e7b;
     border-radius: 10px;
     position: relative;
     border-style: solid;
     cursor: pointer;
     margin-right: 5px;
-
 }
 
 #skip:hover {
-    border-color: #FFE8A3;
-    background-color: rgba(240, 209, 115, 0.7);
+    border-color: #ca5122;
+    background-color:  rgba(255, 127, 54, 0.6);
     color: #fff;
 }
 
-#next {
+#name_result{
     padding: 8px 16px;
-    background-color: rgba(132, 169, 140, 0.6);
+    background-color:  rgba(132, 169, 140, 0.6);
     border-color: #84A98C;
     border-radius: 10px;
     border-style: solid;
@@ -70,7 +65,7 @@ input {
     margin-left: 5px;
 }
 
-#next:hover {
+#name_result:hover {
     color: #fff;
     border-color: #38534d;
     background-color: rgba(82, 121, 111,0.8);

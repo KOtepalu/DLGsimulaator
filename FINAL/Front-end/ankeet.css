@@ -74,8 +74,8 @@ input {
 #skip {
     padding: 8px 16px;
     color: #fff;
-    background-color: rgba(255, 239, 100, 0.6);
-    border-color: #F7CA18;
+    background-color: rgba(255, 157, 100, 0.6);
+    border-color: #f59e7b;
     border-radius: 10px;
     position: relative;
     border-style: solid;
@@ -85,8 +85,8 @@ input {
 }
 
 #skip:hover {
-    background-color: rgba(255, 235, 52, 0.8);
-    border-color: #ffcc00;
+    background-color: rgba(255, 127, 54, 0.6);
+    border-color: #ca5122;
     color: #fff;
 }
 

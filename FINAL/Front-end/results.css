@@ -26,6 +26,10 @@ body {
 p{
     grid-row: 1/2;
     text-align: center;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .textcontainer{
@@ -34,6 +38,7 @@ p{
     justify-content: center;
     align-items: center;
     padding: 10px;
+    height: 70px;
 }
 
 .text{
@@ -44,39 +49,40 @@ p{
     grid-row: 3/4;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 a {
-    padding: 5px;
+    margin-right: 15px;
 }
 
 button{
     padding: 5px;
     font-size: 14px;
-    border-radius: 12px; 
+    border-radius: 10px; 
     border-style:solid;
-}
-
-.nosubmit{
-    color: black;
-    background-color: #ffe8a3bd;
-    border-color: #FFE8A3;
-    font-size: 13px;
+    height: fit-content;
+    font-size: 14px;
+    color: white;
 }
 
 .submit{
-    color: #fff;
-    background-color: #84a98cb2;
+    background-color: rgba(132, 169, 140, 0.6);
     border-color: #84A98C;
 }
 
-.nosubmit:hover{
-    border-color: #ffde79;
-    background-color: #ffde79b2;
-    color: black;
+.submit:hover{
+    background-color: rgba(82, 121, 111,0.8);
+    border-color:  #38534d;
 }
 
-.submit:hover{
-    background-color: #46676bb2;
-    border-color:  #354F52;
+.nosubmit{
+    background-color: rgba(255, 157, 100, 0.6);   border-color: #f59e7b;
 }
+
+.nosubmit:hover{
+    border-color: #ca5122;
+    background-color: rgba(255, 127, 54, 0.6);
+}
+
+

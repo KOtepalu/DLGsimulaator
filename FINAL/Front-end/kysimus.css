@@ -1,5 +1,5 @@
 body {
-    background-image: url("../pics/taust3.0.jpg");
+    background-image: url("../pics/taust7.0.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -84,17 +84,20 @@ body {
 
 .answer-button {
     color: white;
-    width: 300px;
+    width: 250px;
     height: fit-content;
     margin: 10px;
     padding: 15px 10px;
     border-radius: 10px;
     border-width: 1px;
-    background: rgba(132, 169, 140, 0.5);
+    background: rgba(132, 169, 140, 0.2);
+    border-color: #84A98C;
+    font-size: 16px;
+    min-height: 85px;
 }
 
 .answer-button:hover {
-    background: rgba(132, 169, 140, 0.7);
+    background: rgba(132, 169, 140, 0.5);
 }
 
 #question_text{
