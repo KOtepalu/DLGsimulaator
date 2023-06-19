@@ -27,6 +27,7 @@ function startTimer(duration) {
     if (--timer < 0) {
       clearInterval(timerInterval);
       localStorage.removeItem('timerValue');
+      saveTimePassedToSession();
       window.location.href = "results.php";
     }
   }, 1000);
@@ -40,14 +41,21 @@ function resetTimer() {
 
 function calculateTimePassed() {
   var timerValue = localStorage.getItem('timerValue');
-  var elapsedTime = initialDuration - timerValue;
+  var elapsedTime = initialDuration - parseInt(timerValue, 10);
   return elapsedTime;
 }
 
-
-// peaks minema results.php lehele
-
-/* <script>
-var timePassed = calculateTimePassed();
-console.log("Time passed: " + timePassed + " seconds");
-</script> */
+function saveTimePassedToSession() {
+  var timePassed = calculateTimePassed();
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'save_time_passed.php');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      console.log("Time passed saved to session successfully.");
+    } else {
+      console.log("Failed to save time passed to session.");
+    }
+  };
+  xhr.send('timePassed=' + timePassed);
+}

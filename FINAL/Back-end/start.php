@@ -22,7 +22,7 @@ $form_kids = $_SESSION['form_kids'] ?? "";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Front-end/begin.css">
-    <script src="timer.js" defer></script>
+    <script src="timer.js"></script>
     <title>Start</title>
 </head>
 <body>
