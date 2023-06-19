@@ -97,6 +97,38 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
         echo "Error inserting data: " . $conn->error;
     }
 }
+	// FIGURES
+$ms_pos = "../pics/ms_happy1.0.png";
+$ms_neg = "../pics/ms_negative1.0.png";
+$ms_neut = "../pics/ms_neutral1.0.png";
+$pc_pos = "../pics/pc_happy1.0.png";
+$pc_neg = "../pics/pc_negative1.0.png";
+$pc_neut = "../pics/pc_neutral1.0.png";
+$msFigure = "";
+$pcFigure = "";
+
+if (isset($_POST['answer_score'])) {
+    $selectedAnswerScore = $_POST['answer_score'];
+    $msFigure = $ms_neut;
+    $pcFigure = $pc_neut;
+
+    echo "Score: " . $selectedAnswerScore . "<br>"; // Debugging statement
+        
+    if ($selectedAnswerScore >= 1) {
+        $msFigure = $ms_pos;
+        $pcFigure = $pc_pos; 
+        echo "Positive Figures<br>"; // Debugging statement
+    } else if($selectedAnswerScore === 0) {
+        $msFigure = $ms_neut;
+        $pcFigure = $pc_neut;
+        echo "Neutral Figures<br>"; // Debugging statement
+    } else {
+        $msFigure = $ms_neg;
+        $pcFigure = $pc_neg;
+        echo "Negative Figures<br>"; // Debugging statement
+    }
+    var_dump($msFigure, $pcFigure);
+}
 ?>
 
 <!DOCTYPE html>
