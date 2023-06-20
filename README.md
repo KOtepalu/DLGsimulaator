@@ -24,7 +24,7 @@ Kristel Kolkanen, Annika Rohtmets, Isabella Pebsen, Karl Otepalu, Aksel Talvoja
 ![submitname](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/c9aa91b2-0180-4c08-99bd-6d522b09b4bd)
 ![leaderboard](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/e1475862-f4b9-46b3-bb48-a8d325f69476)
 ![share](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/6bc9218c-e3e9-45af-a840-94dc9d26b448)
-![kuraator](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/081df311-ea2a-4824-8dbe-40cff5c9a464)
+![kuraator](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/e491294a-3e73-45be-ab0c-b41ff06357ef)
 
 ## Paigaldusjuhised
 
