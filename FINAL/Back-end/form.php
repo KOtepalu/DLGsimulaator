@@ -1,11 +1,6 @@
 <?php
-
 session_start();
-require_once ".../.../config.php";
-//$servername = "localhost";
-//$username = "if22";
-//$password = "if22pass";
-//$dbname = "if22_DLGsimulaator";
+require_once ".../.../config_dlg.php";
 
 $form_name = $_SESSION['form_name'] ?? null;
 $form_age = $_SESSION['form_age'] ?? null;
@@ -34,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['form_hobby'] = $form_hobby;
         $_SESSION['form_kids'] = $form_kids;
         
-
         $conn = new mysqli($servername, $username, $password, $dbname);
         $conn->set_charset("utf8");
 
@@ -101,7 +95,6 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
                 
                 <label for="hobby_input">Hobby:</label>
                 <input type="text" id="hobby_input" name="hobby_input" placeholder="Hobby">
-
             
                 <label for="kids_input">Kids:</label>
                 <input id="kids_input" name="kids_input" placeholder="Number of Kids" list="kids_list" min="1" max="10">
@@ -121,7 +114,6 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
                     event.preventDefault(); // Prevent form submission if validation fails
                 }
             });
-
 
             function validateForm() {
                 var input = document.getElementById("kids_input").value.trim();
