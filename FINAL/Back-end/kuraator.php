@@ -1,5 +1,5 @@
 <?php
-require_once ".../.../config_dlg.php";
+require_once "../config_dlg.php";
     $comment_error = null;
 
     if(isset($_POST["deleting"])){
