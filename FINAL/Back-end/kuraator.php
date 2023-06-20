@@ -1,10 +1,5 @@
 <?php
-require_once ".../.../config.php";
-    //$servername = "localhost";
-    //$username = "if22";
-    //$password = "if22pass";
-    //$dbname = "if22_DLGsimulaator";
-
+require_once ".../.../config_dlg.php";
     $comment_error = null;
 
     if(isset($_POST["deleting"])){
