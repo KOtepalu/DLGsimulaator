@@ -108,8 +108,8 @@ if (isset($_POST["name_input"]) || isset($_POST["age_input"]) || isset($_POST["c
             </div>
         </form>
         <div class="btnContainer">
-            <a href="start.php"><button id="skip">SKIP</button></a>
-            <button form="myForm" type="submit" id="next" name="form_submit">NEXT</button>
+            <button form="myForm" type="submit" id="skip" name="form_submit" value="ignore" formnovalidate>SKIP</button>
+            <button form="myForm" type="submit" id="next" name="form_submit" value="submit">NEXT</button>
         </div>
         <script>
             var form = document.getElementById("myForm");
