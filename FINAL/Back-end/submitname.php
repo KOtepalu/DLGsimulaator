@@ -1,10 +1,6 @@
 <?php
 session_start();
-require_once ".../.../config.php";
-//$servername = "localhost";
-//$username = "if22";
-//$password = "if22pass";
-//$dbname = "if22_DLGsimulaator";
+require_once ".../.../config_dlg.php";
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $points = $_SESSION['points'] ?? "";
@@ -13,18 +9,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 if (isset($_POST['name_input'], $_POST['points'])) {
     $name = $_POST['name_input'];
     $new_form_id = $_SESSION['form_id'] ?? "";
     $points = $_SESSION['points'] ?? "";
 
-    // Prepare the data for SQL insertion
     $name = $conn->real_escape_string($name);
     $new_form_id = $conn->real_escape_string($new_form_id);
     $points = $conn->real_escape_string($points);
 
-    // Check if a record already exists for the form ID
     $checkSql = "SELECT * FROM User_Result WHERE Form_form_id = '$new_form_id'";
     $result = $conn->query($checkSql);
 
@@ -34,7 +27,6 @@ if (isset($_POST['name_input'], $_POST['points'])) {
     }
 
     if ($result->num_rows > 0) {
-        // Update the existing record
         $updateSql = "UPDATE User_Result SET result_name = '$name', result_score = '$points' WHERE Form_form_id = '$new_form_id'";
         if ($conn->query($updateSql) === TRUE) {
             echo "Name updated successfully.";
@@ -42,7 +34,6 @@ if (isset($_POST['name_input'], $_POST['points'])) {
             echo "Error updating name: " . $conn->error;
         }
     } else {
-        // Insert a new record
         $insertSql = "INSERT INTO User_Result (result_name, Form_form_id, result_score) VALUES ('$name', '$new_form_id', '$points')";
         if ($conn->query($insertSql) === TRUE) {
             echo "Name inserted successfully.";
@@ -58,8 +49,6 @@ if (isset($_POST['name_input'], $_POST['points'])) {
 
 $conn->close();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
