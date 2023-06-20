@@ -78,8 +78,13 @@ function getAnswers($questionId){
 // Check if a question ID is provided in the URL
 if (isset($_POST['questionId'])) {
     $questionId = $_POST['questionId'];
-} else {
-    $questionId = 1; // Default starting question ID
+} elseif(isset($_SESSION['form_name']) && $_SESSION['form_name'] !== ''){
+    $questionId = 1;
+} elseif(isset($_SESSION['form_name']) && $_SESSION['form_name'] === ''){
+    $questionId = 101;
+}
+else {
+    $questionId = 101; // Default starting question ID
 }
 
 $question = getQuestion($questionId);
