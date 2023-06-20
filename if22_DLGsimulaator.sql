@@ -570,7 +570,7 @@ INSERT INTO `Question` (`question_id`, `question_text`, `question_form`, `questi
 (1201, ' Do you have any questions for us?', 0, 0, 0),
 (1202, 'Best students are allowed to apply for TLU and state scholarships but they don\'t cover the full study fee and living costs. So we don\'t recommend you plan your financial support only on scholarships. ', 0, 0, 1),
 (1203, 'Internship is a mandatory course in the DLG programme. One learning outcome we want you to achieve during this course is the ability to create contacts and find an internship position. We can provide you with contacts if this task is too challenging for you.', 0, 0, 1),
-(1204, 'You are from [country] so [yes, you need a visa / you don\'t need a visa]. To make sure, please check this information from our Ministry of Foreign Affairs website.', 1, 0, 1),
+(1204, 'To make sure, please check this information from our Ministry of Foreign Affairs website.', 1, 0, 1),
 (1205, 'This is not necessary. You will learn all the tools you need here. But if you would like to prepare yourself before your studies begin, we recommend some online courses that teach you how to develop games with Unity.', 0, 0, 1),
 (1206, 'This depends on how many candidates we have and what are the admission results. Before the pandemic, we had 30 students. When Corona kicked in the number dropped to 10. The expected size of the study group now is between 15 - 20 students.\r\n', 0, 0, 1),
 (1207, 'Yes. You are allowed to work with your study visa. Our classes are scheduled in the evenings to allow students to work during the daytime. But please, make sure that work is not negatively impacting your study.', 0, 0, 1),
