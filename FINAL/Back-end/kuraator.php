@@ -1,8 +1,9 @@
 <?php
-    $servername = "localhost";
-    $username = "if22";
-    $password = "if22pass";
-    $dbname = "if22_DLGsimulaator";
+require_once ".../.../config.php";
+    //$servername = "localhost";
+    //$username = "if22";
+    //$password = "if22pass";
+    //$dbname = "if22_DLGsimulaator";
 
     $comment_error = null;
 
