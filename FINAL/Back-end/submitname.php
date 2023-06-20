@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once ".../.../config_dlg.php";
+require_once "../config_dlg.php";
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $points = $_SESSION['points'] ?? "";
