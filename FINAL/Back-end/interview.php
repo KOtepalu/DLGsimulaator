@@ -144,7 +144,12 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
     $figure_2 = "../pics/pc_neutral1.0.png";
 
     // Determine the figure based on the change in points
-    if ($points > $_SESSION['previous_points']) {
+    if (empty($_SESSION['previous_points'])){
+        $figure_1 = "../pics/ms_neutral1.0.png";
+        $figure_2 = "../pics/pc_neutral1.0.png";
+        $_SESSION['previous_points'] = 80;
+    }
+    elseif ($points > $_SESSION['previous_points']) {
         $figure_1 = "../pics/ms_happy1.0.png";
         $figure_2 = "../pics/pc_happy1.0.png";
     } elseif ($points < $_SESSION['previous_points']) {
