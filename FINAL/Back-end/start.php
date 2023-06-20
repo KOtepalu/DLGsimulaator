@@ -23,7 +23,8 @@ $form_kids = $_SESSION['form_kids'] ?? "";
 </head>
 <body>
   <div id="textcontainer">
-      <p>The interview is about to begin. You have 20 minutes to answer the questions.</p>
+      <p>The interview is about to begin.</p>
+      <p>You have 20 minutes to answer the questions.</p>
   
     <form action="interview.php" method="POST">
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
