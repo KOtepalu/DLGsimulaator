@@ -2,8 +2,6 @@
 
 session_start();
 // Retrieve the form_id from the URL
-
-
 $new_form_id = $_SESSION['form_id'] ?? "";
 $form_name = $_SESSION['form_name'] ?? "";
 $form_age = $_SESSION['form_age'] ?? "";
@@ -12,9 +10,7 @@ $form_education = $_SESSION['form_education'] ?? "";
 $form_work = $_SESSION['form_work'] ?? "";
 $form_hobby = $_SESSION['form_hobby'] ?? "";
 $form_kids = $_SESSION['form_kids'] ?? "";
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
