@@ -20,10 +20,11 @@
                 </thead>
                 <tbody>
                     <?php
-                    $servername = "localhost";
-                    $username = "if22";
-                    $password = "if22pass";
-                    $dbname = "if22_DLGsimulaator";
+			require_once ".../.../config.php";
+                    //$servername = "localhost";
+                    //$username = "if22";
+                    //$password = "if22pass";
+                    //$dbname = "if22_DLGsimulaator";
 
                     // Connect to the database
                     $conn = new mysqli($servername, $username, $password, $dbname);
