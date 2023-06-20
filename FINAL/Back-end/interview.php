@@ -1,9 +1,10 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "if22";
-$password = "if22pass";
-$dbname = "if22_DLGsimulaator";
+require_once ".../.../config.php";
+//$servername = "localhost";
+//$username = "if22";
+//$password = "if22pass";
+//$dbname = "if22_DLGsimulaator";
 // Loon AB-ga ühenduse
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
