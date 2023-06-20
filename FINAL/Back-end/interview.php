@@ -1,11 +1,13 @@
 <?php
 session_start();
-require_once ".../.../config_dlg.php";
+require_once "../config_dlg.php";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$start_time = time();
+$_SESSION['start_time'] = $start_time;
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $form_name = $_SESSION['form_name'] ?? "";
@@ -197,12 +199,34 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
                     <input type="hidden" name="points" value="<?php echo $next_points; ?>">
                     <button class="answer-button" type="submit"><?php echo $answer_text; ?></button>
                 </form>
+	        <?php $end_time = time();
+                $_SESSION['end_time'] = $end_time;?>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>
 </div>
 </div>
 </body>
+	<?php
+        /* $start_time = $_SESSION['start_time'] ?? 0; // Retrieve the start time from session*/
+        $end_time = $_SESSION['end_time'] ?? 0;
+         // Retrieve the end time from session 
+
+        if ($start_time && $end_time) {
+            $time_diff = $end_time - $start_time;
+            $time_diff = $time_diff * (-1);
+            // Calculate the difference in minutes
+            $_SESSION['time_diff'] = $time_diff;
+
+            $time_diff_minutes = floor($time_diff / 60);
+            $_SESSION['time_diff_minutes'] = $time_diff_minutes;
+
+            echo "Time difference in seconds: " . $time_diff . " seconds<br>";
+            echo "Time difference in minutes: " . $time_diff_minutes . " minutes<br>";
+        } else {
+            echo "Start and end times are not set.";
+        }
+    ?>
 <script>
 var isMuted = false;
 var muteBtn = document.getElementById("mute");
