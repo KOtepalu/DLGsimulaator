@@ -20,11 +20,7 @@
                 </thead>
                 <tbody>
                     <?php
-			require_once ".../.../config.php";
-                    //$servername = "localhost";
-                    //$username = "if22";
-                    //$password = "if22pass";
-                    //$dbname = "if22_DLGsimulaator";
+			require_once ".../.../config_dlg.php";
 
                     // Connect to the database
                     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -34,8 +30,6 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
 
-                    // Retrieve the results from the User_Result table and sort them by score in descending order,
-                    // and if scores are the same, sort by result_time in ascending order
                     $results_query = "SELECT result_id, result_score, result_time, result_name FROM User_Result WHERE deleted = 0 ORDER BY result_score DESC, result_time ASC LIMIT 10";
                     $results_result = $conn->query($results_query);
 
@@ -43,7 +37,6 @@
                     if ($results_result->num_rows > 0) {
                         $rank = 1;
                         while ($row = $results_result->fetch_assoc()) {
-
                            		echo "<tr>";
                             		echo "<td>" . $rank . "</td>";
                             		echo "<td>" . $row["result_name"] . "</td>";
@@ -51,13 +44,10 @@
                             		echo "<td>" . $row["result_time"] . "</td>";
                             		echo "</tr>";
                             		$rank++;
-				
                         }
                     } else {
                         echo "<tr><td colspan='4'>No results found.</td></tr>";
                     }
-
-                    // Close the database connection
                     $conn->close();
                     ?>
                 </tbody>
