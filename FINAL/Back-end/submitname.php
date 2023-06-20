@@ -1,9 +1,10 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "if22";
-$password = "if22pass";
-$dbname = "if22_DLGsimulaator";
+require_once ".../.../config.php";
+//$servername = "localhost";
+//$username = "if22";
+//$password = "if22pass";
+//$dbname = "if22_DLGsimulaator";
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $points = $_SESSION['points'] ?? "";
