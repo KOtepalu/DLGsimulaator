@@ -79,11 +79,6 @@ $conn->close();
             <button form="myName" type="submit" id="name_result" name="form_submit">SUBMIT</button>
             
         </form>
-        <div>
-            <p>Session values:</p>
-            <p>Form ID: <?php echo $new_form_id; ?></p>
-            <p>Points: <?php echo $points; ?></p>
-        </div>
     </div>  
 </body>
 </html>
