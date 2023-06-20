@@ -2,6 +2,13 @@
 session_start();
 
 $new_form_id = $_SESSION['form_id'] ?? "";
+$final_time = $_SESSION['time_diff'] ?? "";
+
+$final_time_seconds = intval( $final_time % 60);
+$final_time_minutes = intval( $final_time / 60);
+
+$final_time_minutes = $final_time_minutes < 10 ? "0" . $final_time_minutes : $final_time_minutes;
+$final_time_seconds = $final_time_seconds < 10 ? "0" . $final_time_seconds : $final_time_seconds;
 
 if (isset($_POST['timePassed'])) {
     $timePassed = $_POST['timePassed'];
@@ -24,7 +31,7 @@ if (isset($_POST['points'])) {
     $_SESSION['points'] = $points;
 }
 
-require_once ".../.../config_dlg.php";
+require_once "../config_dlg.php";
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $points = $_SESSION['points'] ?? "";
@@ -61,7 +68,7 @@ if (isset($_SESSION['timePassed']) && isset($_SESSION['form_id'])) {
 </head>
 <body>
 <div class="session-value">
-  <p>Time Passed: <?php echo $_SESSION['timePassed'] ?></p>
+<p>Time Passed: <?php echo  $final_time_minutes .':'. $final_time_seconds; ?></p>
 </div>
     <div class="container">       
         <p>Thank you for participating!</p>
