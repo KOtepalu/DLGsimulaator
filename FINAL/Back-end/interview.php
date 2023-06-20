@@ -1,11 +1,7 @@
 <?php
 session_start();
-require_once ".../.../config.php";
-//$servername = "localhost";
-//$username = "if22";
-//$password = "if22pass";
-//$dbname = "if22_DLGsimulaator";
-// Loon AB-ga ühenduse
+require_once ".../.../config_dlg.php";
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -56,23 +52,7 @@ function getAnswers($questionId){
             ];
     }
     $stmt->close();
-
-
-
-/* 
-    $sql = "SELECT `answer_text`, `next_question_id`, `answer_score` , `answer_end` FROM `Answer` WHERE `Question_question_id` = $questionId";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()){
-            $answers_list[] = [
-                "answer_text" => $row["answer_text"],
-                "next_question_id" => $row["next_question_id"],
-                "answer_score" => $row["answer_score"],
-                "answer_end" => $row["answer_end"]
-            ];
-        }
-    } */
+	
     return $answers_list;
 }
 
@@ -122,8 +102,6 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
         echo "Error inserting data: " . $conn->error;
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
