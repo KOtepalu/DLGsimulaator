@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once ".../.../config_dlg.php";
+require_once "../config_dlg.php";
 
 $form_name = $_SESSION['form_name'] ?? null;
 $form_age = $_SESSION['form_age'] ?? null;
