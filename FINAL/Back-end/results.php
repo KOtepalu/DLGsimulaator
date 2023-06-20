@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -25,11 +24,7 @@ if (isset($_POST['points'])) {
     $_SESSION['points'] = $points;
 }
 
-require_once ".../.../config.php";
-//$servername = "localhost";
-//$username = "if22";
-//$password = "if22pass";
-//$dbname = "if22_DLGsimulaator";
+require_once ".../.../config_dlg.php";
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $points = $_SESSION['points'] ?? "";
@@ -54,7 +49,6 @@ if (isset($_SESSION['timePassed']) && isset($_SESSION['form_id'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
