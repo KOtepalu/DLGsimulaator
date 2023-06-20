@@ -1,10 +1,11 @@
 <?php
 
 session_start();
-$servername = "localhost";
-$username = "if22";
-$password = "if22pass";
-$dbname = "if22_DLGsimulaator";
+require_once ".../.../config.php";
+//$servername = "localhost";
+//$username = "if22";
+//$password = "if22pass";
+//$dbname = "if22_DLGsimulaator";
 
 $form_name = $_SESSION['form_name'] ?? null;
 $form_age = $_SESSION['form_age'] ?? null;
