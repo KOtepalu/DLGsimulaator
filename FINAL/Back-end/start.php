@@ -23,8 +23,7 @@ $form_kids = $_SESSION['form_kids'] ?? "";
 </head>
 <body>
   <div id="textcontainer">
-      <p>Welcome to the Interview Simulator!</p>
-      <p>Your form has been submitted successfully.</p>
+      <p>The interview is about to begin. You have 20 minutes to answer the questions.</p>
   
     <form action="interview.php" method="POST">
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
@@ -36,7 +35,7 @@ $form_kids = $_SESSION['form_kids'] ?? "";
         <input type="hidden" name="form_hobby" value="<?php echo $form_hobby; ?>">
         <input type="hidden" name="form_kids" value="<?php echo $form_kids; ?>">
         <input type="hidden" name="form_id" value="<?php echo $new_form_id; ?>">
-        <button id="button" type="submit">Begin</button>
+        <button id="button" type="submit">START</button>
     </form>
   </div>
   <script>resetTimer();</script>
