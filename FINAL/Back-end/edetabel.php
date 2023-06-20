@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                     <?php
-			require_once ".../.../config_dlg.php";
+			require_once "../config_dlg.php";
 
                     // Connect to the database
                     $conn = new mysqli($servername, $username, $password, $dbname);
