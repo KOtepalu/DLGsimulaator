@@ -1,3 +1,0 @@
-<?php
-
-//edetabeli andmete lugemine
