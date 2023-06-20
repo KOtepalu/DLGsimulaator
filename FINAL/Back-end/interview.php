@@ -103,7 +103,7 @@ function roundScore(&$score) {
 // Retrieve the points from the URL parameter
 if (isset($_POST['points'])) {
     $points = $_POST['points'];
-    echo $_POST['points'];
+    //echo $_POST['points'];
 } else {
     $points = 80; // Default starting points
 }
@@ -116,7 +116,7 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
     $points = $_POST['points'];
     $sql = "INSERT INTO `User_Result` (`Form_form_id`, `result_score`) VALUES ('$form_id', '$points')";
     if ($conn->query($sql) === TRUE) {
-        echo "Data inserted successfully.";
+        echo "";
     } else {
         echo "Error inserting data: " . $conn->error;
     }
