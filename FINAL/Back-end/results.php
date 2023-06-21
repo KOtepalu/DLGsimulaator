@@ -10,22 +10,6 @@ $final_time_minutes = intval( $final_time / 60);
 $final_time_minutes = $final_time_minutes < 10 ? "0" . $final_time_minutes : $final_time_minutes;
 $final_time_seconds = $final_time_seconds < 10 ? "0" . $final_time_seconds : $final_time_seconds;
 
-if (isset($_POST['timePassed'])) {
-    $timePassed = $_POST['timePassed'];
-    $_SESSION['timePassed'] = $timePassed;
-} elseif (isset($_SESSION['timePassed'])) {
-    // Retrieve the value from localStorage if available
-    if (isset($_SESSION['localStorageTimePassed'])) {
-        $timePassed = $_SESSION['localStorageTimePassed'];
-        $_SESSION['timePassed'] = $timePassed;
-        unset($_SESSION['localStorageTimePassed']); // Remove the temporary localStorage value
-    } else {
-        $timePassed = $_SESSION['timePassed'];
-    }
-} else {
-    $timePassed = 0;
-}
-
 if (isset($_POST['points'])) {
     $points = $_POST['points'];
     $_SESSION['points'] = $points;
@@ -35,22 +19,22 @@ require_once "../config_dlg.php";
 
 $new_form_id = $_SESSION['form_id'] ?? "";
 $points = $_SESSION['points'] ?? "";
-$timePassed = $_SESSION['timePassed'] ?? "";
+$time_diff = $_SESSION['time_diff'] ?? "";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if (isset($_SESSION['timePassed']) && isset($_SESSION['form_id'])) {
-    $timePassed = $_SESSION['timePassed'];
+if (isset($_SESSION['time_diff']) && isset($_SESSION['form_id'])) {
+    $time_diff = $_SESSION['time_diff'];
     $form_id = $_SESSION['form_id'];
 
-    $formattedTime = gmdate("H:i:s", $timePassed);
+    $formattedTime = gmdate("H:i:s", $time_diff);
 
     $sql = "UPDATE User_Result SET result_time = '$formattedTime' WHERE Form_form_id = '$form_id'";
     if ($conn->query($sql) === TRUE) {
-        echo "Data inserted successfully.";
+        echo "";
     } else {
         echo "Error inserting data: " . $conn->error;
     }
@@ -93,10 +77,5 @@ if (isset($_SESSION['timePassed']) && isset($_SESSION['form_id'])) {
             </form>
         </div>
     </div>
-    <script>
-var timePassed = calculateTimePassed();
-console.log("Time passed: " + timePassed + " seconds");
-saveTimePassedToSession(); // Add this line to save timePassed to session
-</script>
 </body>
 </html>
