@@ -221,10 +221,10 @@ if (isset($_SESSION['form_id']) && isset($_POST['points']) && $answers[0]['answe
             $time_diff_minutes = floor($time_diff / 60);
             $_SESSION['time_diff_minutes'] = $time_diff_minutes;
 
-            echo "Time difference in seconds: " . $time_diff . " seconds<br>";
-            echo "Time difference in minutes: " . $time_diff_minutes . " minutes<br>";
+            //echo "Time difference in seconds: " . $time_diff . " seconds<br>";
+            //echo "Time difference in minutes: " . $time_diff_minutes . " minutes<br>";
         } else {
-            echo "Start and end times are not set.";
+            //echo "Start and end times are not set.";
         }
     ?>
 <script>
