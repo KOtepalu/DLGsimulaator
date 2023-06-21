@@ -44,7 +44,7 @@ if (isset($_POST['name_input'], $_POST['points'])) {
     header("Location: edetabel.php");
     exit;
 } else {
-    echo "Name and points not set.";
+    echo ""; //Name and points not set.
 }
 
 $conn->close();
