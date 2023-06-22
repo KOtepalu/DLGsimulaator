@@ -14,7 +14,7 @@ HTML5, CSS3, PHP 7.3, Javascript, Krita 5.1.5, SQL 5.2.0-1.el9, MariaDB 10.5.16,
 
 Kristel Kolkanen, Annika Rohtmets, Isabella Pebsen, Karl Otepalu, Aksel Talvoja
 
-## Ekraanipildid (tava ning kuraatori lehest
+## Ekraanipildid (tava ning kuraatori lehest)
 
 ![begin](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/7f38ade3-4c89-49fa-986c-c01179f60632)
 ![form](https://github.com/KOtepalu/DLGsimulaator/assets/93727374/cd9e37c9-a3ca-4a62-9bee-c5326b5fae31)
