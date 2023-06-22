@@ -30,7 +30,7 @@ Kristel Kolkanen, Annika Rohtmets, Isabella Pebsen, Karl Otepalu, Aksel Talvoja
 
 1. Veenduge, et PHP, MySQL ja Apache server on õigesti seadistatud. Vajadusel võib abi leida Google'st. 
 2. Lae repositooriumis olevad failid Githubist alla ning   lisa need vajalikku kausta.
-3. Loo andmebaasitabelid kasutades [SQL kaustas olevaid käske](https://github.com/KOtepalu/DLGsimulaator/blob/main/if22_DLGsimulaator.sqlhttps://github.com/KOtepalu/DLGsimulaator/blob/main/if22_DLGsimulaator.sql).
+3. Loo andmebaasitabelid kasutades [SQL kaustas olevaid käske](https://github.com/KOtepalu/DLGsimulaator/blob/main/if22_DLGsimulaator.sql).
 4. Loo config_dlg.php fail ning muuda ära vajalik info, et luua andmebaasiga ühendus.
 5. Veenduge, et config faili asukoht kattuks koodis oleva asukohaga.
 
