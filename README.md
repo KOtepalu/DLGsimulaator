@@ -33,7 +33,7 @@ Kristel Kolkanen, Annika Rohtmets, Isabella Pebsen, Karl Otepalu, Aksel Talvoja
    - Kontrollige, et MariaDB versioon oleks 10.5.16.
    - Kontrollige, et Apache versioon oleks 2.4.
 2. Vajalige failide alla laadimiseks minge GitHubi repositooriumi lehele (https://github.com/KOtepalu/DLGsimulaator). Klõpsake "Code" nuppu ja valige "Download ZIP" võimalus, et allalaadida failid ZIP-vormingus. Pärast allalaadimist ekstrakteerige ZIP-fail oma arvutisse. Leidke vajalik kaust, kuhu soovite failid lisada, ja kopeerige või teisaldage laaditud failid sellesse kausta.
-3. Looge oma andmebaasiga ühendus ning kopeerige SQL-käsud ja käivitage need oma andmebaasis, et luua tabelid. [SQL kaustas olevaid käske](https://github.com/KOtepalu/DLGsimulaator/blob/main/if22_DLGsimulaator.sql).
+3. Looge oma andmebaasiga ühendus ning kopeerige [SQL-käsud](https://github.com/KOtepalu/DLGsimulaator/blob/main/if22_DLGsimulaator.sql) ja käivitage need oma andmebaasis, et luua tabelid.
 4. Looge või muutke config_dlg.php faili. Sinna sisestage oma severi nimi, kasutaja, parool ja andmebaasi nimi. Veenduge, et failide asukoht kattuks githubis oleva paigutusega.
 
 ## Litsents
